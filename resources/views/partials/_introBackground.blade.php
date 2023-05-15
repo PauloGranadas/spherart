@@ -36,4 +36,3 @@
         </div>
     </div>
 </div>
-<!-- Background image -->
