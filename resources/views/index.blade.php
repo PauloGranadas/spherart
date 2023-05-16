@@ -1,5 +1,5 @@
-<x-introLayout>
+<x-layoutIndex>
 
 
 
-</x-introLayout>
+</x-layoutIndex>
