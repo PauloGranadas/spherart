@@ -44,8 +44,8 @@
                 <!-- Collapsible wrapper -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Navbar brand -->
-                    <a class="navbar-brand mt-2 mt-lg-0" href="#">
-                        <img src="images/spherartLogo_w.png" height="40" alt="MDB Logo" loading="lazy" />
+                    <a class="navbar-brand mt-2 mt-lg-0" href="/">
+                        <img src="images/spherartLogo_w.png" height="40" alt="Spherart Logo" loading="lazy" />
                     </a>
                     <!-- Left links -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
