@@ -8,9 +8,14 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
-    function showCollaborators(){
+    function showCollaborators()
+    {
         $users = User::all();
-        return view('users.collaborators', ['users'=> $users]);
+        return view('users.collaborators', ['users' => $users]);
     }
 
+    public function userRegistration()
+    {
+        return view('users.register');
+    }
 }
