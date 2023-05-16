@@ -14,7 +14,7 @@ class UserController extends Controller
         return view('users.collaborators', ['users' => $users]);
     }
 
-    public function userRegistration()
+    function userRegistration()
     {
         return view('users.register');
     }
