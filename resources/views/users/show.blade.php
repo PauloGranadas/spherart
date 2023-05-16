@@ -1,4 +1,4 @@
-<x-layout>
+<x-layoutIndex>
     <div class="grid">
         <div class="g-col-4">
             <img
@@ -15,4 +15,4 @@
             </p>
         </div>
       </div>
-</x-layout>
+</x-layoutIndex>
