@@ -13,4 +13,8 @@ class UserController extends Controller
         return view('users.collaborators', ['users'=> $users]);
     }
 
+    function show(User $user){
+        return view('users.show', ['user'=>$user]);
+    }
+
 }

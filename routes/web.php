@@ -15,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 // pages list
 Route::get('/collaborators', [UserController::class, 'showCollaborators']);
   
 // page detail collaborators
-Route::get('/collaborators/{user}', [ListingController::class, 'show']);
+Route::get('/collaborators/{user}', [UserController::class, 'show']);

@@ -65,6 +65,9 @@
         <!-- Navbar -->
         @include('partials._introBackground')
     </header>
+    <main>
+        {{$slot}}
+    </main>
 
 
     <!-- MDB -->
