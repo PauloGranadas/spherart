@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Rule;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -31,5 +31,8 @@ class UserController extends Controller
             'email' => ['required', 'email'],
             'bio' => 'required',
         ]);
+
+        User::create($formFields);
+        return redirect('/');
     }
 }
