@@ -1,5 +1,5 @@
-<x-layout>
-    @include('partials._introBackground')
+<x-layoutIndex>
 
 
-</x-layout>
+
+</x-layoutIndex>
