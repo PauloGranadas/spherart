@@ -20,9 +20,13 @@ class UserController extends Controller
     {
         return view('users.show', ['user' => $user]);
     }
-
+    // Registration New User
+    function register()
+    {
+        return view('users.register');
+    }
     //Store New User
-    public function store(Request $request)
+    public function storeUser(Request $request)
     {
         $formFields = $request->validate([
             'firstname' => 'required',
@@ -38,6 +42,6 @@ class UserController extends Controller
             $formFields['avatar'] = $request->file('avatar')->store('avatars', 'public');
         }
         Listing::create($formFields);
-        return redirect('/')->with('message', 'Listing created successfully');
+        /* return redirect('/')->with('message', 'Listing created successfully'); */
     }
 }
