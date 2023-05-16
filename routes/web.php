@@ -20,6 +20,9 @@ Route::get('/', function () {
 
 // pages list
 Route::get('/collaborators', [UserController::class, 'showCollaborators']);
-  
+
 // page detail collaborators
 Route::get('/collaborators/{user}', [UserController::class, 'show']);
+
+//Register User
+Route::get('/register', [UserController::class, 'register']);
