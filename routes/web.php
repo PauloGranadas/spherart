@@ -18,4 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// pages list
 Route::get('/collaborators', [UserController::class, 'showCollaborators']);
+  
+// page detail collaborators
+Route::get('/collaborators/{user}', [ListingController::class, 'show']);
