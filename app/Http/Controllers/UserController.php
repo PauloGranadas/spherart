@@ -5,34 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    function showCollaborators()
-    {
+    function showCollaborators(){
         $users = User::all();
-        return view('users.collaborators', ['users' => $users]);
+        return view('users.collaborators', ['users'=> $users]);
     }
 
-    public function userRegistration()
-    {
-        return view('users.register');
+    function show(User $user){
+        return view('users.show', ['user'=>$user]);
     }
-    //Store new User
-    public function store(Request $request)
-    {
-        $formFields = $request->validate([
-            'firstname' => 'required',
-            'lastname' => 'required',
-            'nickname' => ['required', Rule::unique('users', 'nickname')],
-            'country' => 'required',
-            'location' => 'required',
-            'email' => ['required', 'email'],
-            'bio' => 'required',
-        ]);
 
-        User::create($formFields);
-        return redirect('/');
-    }
 }

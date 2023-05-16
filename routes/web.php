@@ -17,11 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
-//Show Collaborators List
+
+// pages list
 Route::get('/collaborators', [UserController::class, 'showCollaborators']);
-
-//Store User Data
-Route::post('/users', [UserController::class, 'store']);
-
-//Show Register Form
-Route::get('/register', [UserController::class, 'userRegistration']);
+  
+// page detail collaborators
+Route::get('/collaborators/{user}', [UserController::class, 'show']);
