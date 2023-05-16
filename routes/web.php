@@ -19,3 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/collaborators', [UserController::class, 'showCollaborators']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
