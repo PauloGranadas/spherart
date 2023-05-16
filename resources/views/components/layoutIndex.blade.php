@@ -112,7 +112,7 @@
         <!-- Navbar -->
 
         <!-- Background image -->
-        <div id="intro" class="bg-image vh-100 shadow-1-strong">
+        <!-- <div id="intro" class="bg-image vh-100 shadow-1-strong">
             <video style="min-width: 100%; min-height: 100%;" playsinline autoplay muted loop>
                 <source class="h-100" src="videos/backvideo.mp4" type="video/mp4" />
             </video>
@@ -128,12 +128,13 @@
                         <img src="images/spherart_w.png" alt="" width="75%">
                         <h2>Connect True Creativity</h2>
 
-                        <a class="btn btn-outline-light btn-lg m-2" href="https://www.youtube.com/watch?v=c9B4TPnak1A" role="button" rel="nofollow" target="_blank">Projects</a>
+                        <a class="btn btn-outline-light btn-lg m-2" href="https://www.youtube.com/watch?v=c9B4TPnak1A"
+                            role="button" rel="nofollow" target="_blank">Projects</a>
                         <a class="btn btn-outline-light btn-lg m-2" href="collaborators" role="button">Collaborators</a>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Background image -->
     </header>
     <!--Main Navigation-->
