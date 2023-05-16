@@ -20,4 +20,4 @@ Route::get('/', function () {
 
 Route::get('/collaborators', [UserController::class, 'showCollaborators']);
 
-Route::get('/userRegistration', [UserController::class, 'userRegistration']);
+Route::get('/register', [UserController::class, 'userRegistration']);

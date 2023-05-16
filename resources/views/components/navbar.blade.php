@@ -15,7 +15,18 @@
 </head>
 
 <body>
+    <style>
+        /* Height for devices larger than 576px */
+        @media (min-width: 992px) {
+            #intro {
+                margin-top: 0px;
+            }
+        }
 
+        .navbar .nav-link {
+            color: #fff !important;
+        }
+    </style>
     <header>
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light" style=" background-color: rgb(22, 26, 82);">

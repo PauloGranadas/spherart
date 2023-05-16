@@ -108,6 +108,7 @@
             </div>
             <!-- Container wrapper -->
         </nav>
+
         <!-- Navbar -->
 
         <!-- Background image -->
@@ -115,6 +116,10 @@
         <!-- Background image -->
     </header>
     <!--Main Navigation-->
+    <main>
+        {{$slot}}
+
+    </main>
 
 
     <!-- MDB -->
