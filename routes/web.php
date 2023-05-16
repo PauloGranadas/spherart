@@ -23,6 +23,3 @@ Route::get('/collaborators', [UserController::class, 'showCollaborators']);
   
 // page detail collaborators
 Route::get('/collaborators/{user}', [UserController::class, 'show']);
-
-// page detail collaborators
-Route::get('/register', [UserController::class, 'show']);
