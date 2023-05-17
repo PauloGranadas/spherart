@@ -34,7 +34,7 @@ class UserController extends Controller
             'nikname' => ['required', Rule::unique('users', 'nikname')],
             'country' => ['required', 'min:3'],
             'locality' => 'required',
-            'email' => ['required', 'email'],
+            'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => 'required|confirmed|min:6',
             'bio' => 'required|min:50',
         ]);
