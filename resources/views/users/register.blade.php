@@ -129,7 +129,7 @@
                 @foreach($checkboxCategories as $checkbox)
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="{{$checkbox->id }}" name="checkboxes[]" value="{{$checkbox->id}}">
-                        <label class="form-check-label" for="{{$checkbox->id}}">{{$checkbox->categories}}</label>
+                        <label class="form-check-label" for="{{$checkbox->id}}">{{$checkbox->area_name}}</label>
                     </div>
                 @endforeach
             </div>

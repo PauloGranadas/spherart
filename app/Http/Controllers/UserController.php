@@ -16,6 +16,10 @@ class UserController extends Controller
         $users = User::all();
         return view('users.collaborators', ['users' => $users]);
     }
+    public function aboutUs()
+    {
+        return view('users.about');
+    }
 
     function show(User $user)
     {
