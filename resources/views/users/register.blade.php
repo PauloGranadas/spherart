@@ -2,7 +2,7 @@
 
     <div class="container">
         <header>
-            <h2 class="text-2xl font-bold uppercase mb-1"> User Registration
+            <h2 class="text-2xl font-bold uppercase mb-1 mt-5"> User Registration
 
             </h2>
             <p class="mb-4">Create an account to participate and create projects</p>
