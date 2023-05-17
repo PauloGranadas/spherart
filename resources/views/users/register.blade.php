@@ -38,9 +38,9 @@
             <div class="row mb-4">
                 <div class="col">
                     <div class="form-outline">
-                        <input type="text" id="form3Example3" class="form-control" name="nickname" value="{{old('nickname')}}" />
+                        <input type="text" id="form3Example3" class="form-control" name="nikname" value="{{old('nikname')}}" />
                         <label class="form-label" for="form3Example3">Nickname</label>
-                        @error('nickname')
+                        @error('nikname')
                         <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                         @enderror
                     </div>
@@ -93,9 +93,9 @@
                 </div>
                 <div class="col">
                     <div class="form-outline mb-4">
-                        <input type="password" id="form3Example7" class="form-control" name="password" value="{{old('confirmpassword')}}" />
+                        <input type="password" id="form3Example7" class="form-control" name="password_confirmation" value="{{old('password_confirmation')}}" />
                         <label class="form-label" for="form3Example7">Confirm Password</label>
-                        @error('confirmpassword')
+                        @error('password_confirmation')
                         <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                         @enderror
                     </div>
@@ -113,8 +113,8 @@
                 @enderror
             </div>
             <div class="form-outline">
-                <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
-                <label class="form-label" for="textAreaExample">Bio</label>
+                <textarea class="form-control" id="textAreaExample" rows="4" name="bio">{{old('bio')}}</textarea>
+                <label class="form-label" for="textAreaExample">Bio (50 characters min.)</label>                
                 @error('bio')
                 <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                 @enderror
