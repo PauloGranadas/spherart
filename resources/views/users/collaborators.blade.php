@@ -9,16 +9,16 @@
                 <div class="row g-0 m-0">
                   <div class="col-md-4">
                     <img
-                      src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
+                      src="{{$user->avatar ? asset('storage/' . $user->avatar) : asset('images/no-image.png')}}"
                       alt="Trendy Pants and Shoes"
                       class="img-fluid rounded-start"
                     />
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">
-                      <h5 class="card-title">{{$user->name}}</h5>
+                      <h5 class="card-title">{{$user->nikname}}</h5>
                       <p class="card-text">
-                        This is a wider card with supporting text below as a natural lead-in to                       
+                        {{$user->bio}}                       
                       </p>
                       <p class="card-text">
                         <a href="/collaborators/{{$user->id}}"  class="btn btn-secondary">See Detail</a>
