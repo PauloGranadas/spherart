@@ -21,8 +21,8 @@
         />
       </div>
       @error('email') 
-                      <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-              @enderror
+        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+      @enderror
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Password</span>
         <input
@@ -34,13 +34,10 @@
           name="password"
           value="{{old('password')}}"
         />
-      </div>
-      @error('password') 
-                      <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-              @enderror
-      
-      
-      
+    </div>
+        @error('password') 
+         <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+        @enderror
       <!-- Submit button -->
       <button type="submit" class="btn btn-primary mb-3">Log in</button>
 

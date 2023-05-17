@@ -65,15 +65,6 @@ class UserController extends Controller
 
         //Store Checkboxes Categories
         $checkboxValues = $request->input('checkboxes');
-
-        /* $checkboxString = implode(',', $checkboxValues);
-
-        $artistCategory = new ArtistCategory();
-        $artistCategory->category_id = $checkboxString;
-        $artistCategory->user_id = $idUser;
-        $artistCategory->save();
- */
-        $checkboxValues = $request->input('checkboxes');
         foreach ($checkboxValues as $category) {
             $artistCategory = new ArtistCategory();
             $artistCategory->category_id = $category;
