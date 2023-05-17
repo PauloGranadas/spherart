@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
+
 
 class UserController extends Controller
 {
@@ -20,14 +20,15 @@ class UserController extends Controller
     {
         return view('users.show', ['user' => $user]);
     }
-    // Registration New User
+    // Show Registration New User
     public function create()
     {
         return view('users.register');
     }
-    //Store New User
+    //Create New User
     public function store(Request $request)
     {
+        //dd($request);
         $formFields = $request->validate([
             'firstname' => ['required', 'min:3'],
             'lastname' => ['required', 'min:3'],

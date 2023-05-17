@@ -11,7 +11,7 @@
         </header>
     </div>
     <div class="container">
-        <form method="POST" action="/users">
+        <form method="POST" action="/users" enctype="multipart/form-data">
             @csrf
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-4">
@@ -71,9 +71,9 @@
 
                 <div class="col">
                     <div class="form-outline mb-4">
-                        <input type="text" id="form3Example8" class="form-control" name="location" value="{{old('location')}}" />
-                        <label class="form-label" for="form3Example8">Location</label>
-                        @error('location')
+                        <input type="text" id="form3Example8" class="form-control" name="locality" value="{{old('locality')}}" />
+                        <label class="form-label" for="form3Example8">Locality</label>
+                        @error('locality')
                         <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                         @enderror
                     </div>

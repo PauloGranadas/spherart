@@ -10,8 +10,8 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
 
-    public function showCategories()
+    /*  public function showCategories()
     {
         $categories = Category::all();
-    }
+    } */
 }

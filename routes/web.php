@@ -24,7 +24,7 @@ Route::get('/collaborators', [UserController::class, 'showCollaborators']);
 // page detail collaborators
 Route::get('/collaborators/{user}', [UserController::class, 'show']);
 
-//Show Register User Form
-Route::get('register', [UserController::class, 'create']);
+//Show Register/Create User Form
+Route::get('/register', [UserController::class, 'create']);
 //Create New User
 Route::post('/users', [UserController::class, 'store']);
