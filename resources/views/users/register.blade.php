@@ -86,19 +86,19 @@
                     <div class="form-outline mb-4">
                         <input type="password" id="form3Example6" class="form-control" name="password" value="{{old('password')}}" />
                         <label class="form-label" for="form3Example6">Password</label>
-                        @error('password')
-                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                        @enderror
                     </div>
+                    @error('password')
+                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                    @enderror
                 </div>
                 <div class="col">
                     <div class="form-outline mb-4">
                         <input type="password" id="form3Example7" class="form-control" name="password_confirmation" value="{{old('password_confirmation')}}" />
                         <label class="form-label" for="form3Example7">Confirm Password</label>
-                        @error('password_confirmation')
-                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                        @enderror
                     </div>
+                    @error('password_confirmation')
+                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                    @enderror
                 </div>
             </div>
             {{-- Importe File Feature  --}}
