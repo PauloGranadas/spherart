@@ -126,57 +126,12 @@
 
             <!-- Checked checkbox -->
             <div class="row">
-                <div class="col">
+                @foreach($checkboxCategories as $checkbox)
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="musician" name="musician" id="flexCheckDefault" />
-                        <label class="form-check-label" for="flexCheckDefault">Musician</label>
+                        <input class="form-check-input" type="checkbox" id="{{$checkbox->id }}" name="checkboxes[]" value="{{$checkbox->id}}">
+                        <label class="form-check-label" for="{{$checkbox->id}}">{{$checkbox->categories}}</label>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="composer" name="composer" composer id="flexCheckDefault" />
-                        <label class="form-check-label" for="flexCheckDefault">Composer</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="dancer" name="dancer" id="flexCheckDefault" />
-                        <label class="form-check-label" for="flexCheckDefault">Dancer</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="actor/actress" name="actor/actress" id="flexCheckDefault" />
-                        <label class="form-check-label" for="flexCheckDefault">Actor/Actress</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="photographer" name="photographer" id="flexCheckDefault" />
-                        <label class="form-check-label" for="flexCheckDefault">Photographer</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="stylist" name="stylist" id="flexCheckDefault" />
-                        <label class="form-check-label" for="flexCheckDefault">Stylist</label>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="videographer" name="videographer" id="flexCheckDefault" />
-                        <label class="form-check-label" for="flexCheckDefault">Videographer</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="painter" name="painter" id="flexCheckDefault" />
-                        <label class="form-check-label" for="flexCheckDefault">Painter</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="sculptor" name="sculptor" id="flexCheckDefault" />
-                        <label class="form-check-label" for="flexCheckDefault">Sculptor</label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="concept developer" name="concept developer" id="flexCheckDefault" />
-                        <label class="form-check-label" for="flexCheckDefault">Concept Developer</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="sketcher" name="sketcher" id="flexCheckDefault" />
-                        <label class="form-check-label" for="flexCheckDefault">Sketcher</label>
-                    </div>
-                </div>
+                @endforeach
             </div>
 
 

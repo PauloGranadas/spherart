@@ -57,6 +57,9 @@
                             <a class="nav-link" href="collaborators">Collaborators</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="register">Register</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#">About Us</a>
                         </li>
                     </ul>
@@ -67,13 +70,15 @@
                 <!-- Right elements -->
                 <div class="d-flex align-items-center ">
 
+                    
 
                     <!-- Notifications -->
-                    <div class="dropdown">
+                    <div class="dropdown" style="color: rgb(255, 255, 255);">
                         <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                             <i class="fas fa-bell"></i>
                             <span class="badge rounded-pill badge-notification bg-danger">1</span>
                         </a>
+                        
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                             <li>
                                 <a class="dropdown-item" href="#">Some news</a>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -23,7 +24,9 @@ class UserController extends Controller
     // Show Registration New User
     public function create()
     {
-        return view('users.register');
+        //return view('users.register');
+        $checkboxCategories = Category::all();
+        return view('users.register')->with('checkboxCategories', $checkboxCategories);
     }
     //Create New User
     public function store(Request $request)
@@ -39,12 +42,19 @@ class UserController extends Controller
             'password' => 'required|confirmed|min:6',
             'bio' => 'required|min:50',
         ]);
+        //Store Checkboxes Categories
+        $checkboxValues = $request->input('checkboxes');
+        $checkboxString = implode(',', $checkboxValues);
+
+
         //store avatar image file
         if ($request->hasFile('avatar')) {
             $formFields['avatar'] = $request->file('avatar')->store('avatars', 'public');
         }
         // hash the password using the bcrypt()
         $formFields['password'] = bcrypt($formFields['password']);
+
+
         //create the user
         $user = User::create($formFields);
         //Login
