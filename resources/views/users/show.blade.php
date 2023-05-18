@@ -2,7 +2,7 @@
     <div class="grid">
         <div class="g-col-4">
             <img
-                src="https://mdbcdn.b-cdn.net/img/new/standard/city/043.webp"
+               src="{{$user->avatar ? asset('storage/' . $user->avatar) : asset('images/no-image.png')}}"
                 class="img-fluid hover-shadow"
                 alt="Los Angeles Skyscrapers"
                 />

@@ -20,6 +20,20 @@ Route::get('/', function () {
 
 // pages list
 Route::get('/collaborators', [UserController::class, 'showCollaborators']);
-  
+
 // page detail collaborators
 Route::get('/collaborators/{user}', [UserController::class, 'show']);
+
+//Show Register/Create User Form
+Route::get('/register', [UserController::class, 'create']);
+//Create New User
+Route::post('/users', [UserController::class, 'store']);
+//Logout user
+Route::post('/logout', [UserController::class, 'logout'])/* ->middleware('auth') */;
+//Show Login Form
+Route::get('/login', [UserController::class, 'login'])/* ->name('login')->middleware('guest') */;
+//Login
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
+//Show About Us Page
+Route::get('/about', [UserController::class, 'aboutUs']);
