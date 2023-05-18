@@ -49,4 +49,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Category::class, 'artist_categories', 'user_id', 'category_id');
     }
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class, 'creator_id');
+    }
 }

@@ -10,7 +10,7 @@ class ProjectController extends Controller
 {
     function index()
     {
-        $projects = Project::all();
+        $projects = Project::with('user')->get();
         return view('projects.projects', ['projects' => $projects]);
     }
 }

@@ -14,5 +14,10 @@ class Project extends Model
         'status',
         'creator_id',
         'cover',
-    ];    
+    ];
+    
+    function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
