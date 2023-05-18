@@ -1,17 +1,18 @@
 <x-layoutIndex>
   <div class="container">
-    <div class="row row-cols-1 row-cols-md-3 g-4 mt-5 mb-5">
+    <div class="row row-cols-1 row-cols-md-3 g-2 mt-5 mb-5">
 
 
               @foreach ($users as $user)                
             
-              <div class="card pl-0">
+              <div class="card px-0">
                 <div class="row g-0 m-0">
-                  <div class="col-md-4">
+                  <div class="col-md-4" style="position: relative;">
                     <img
                       src="{{$user->avatar ? asset('storage/' . $user->avatar) : asset('images/no-image.png')}}"
                       alt="Trendy Pants and Shoes"
                       class="img-fluid rounded-start"                      
+                      style="position: absolute; top: 0;left: 0;width: 100%; height: 100%; object-fit: cover;"
                     />
                   </div>
                   <div class="col-md-8">

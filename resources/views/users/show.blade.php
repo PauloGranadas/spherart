@@ -1,5 +1,10 @@
 <x-layoutIndex>
-    <div class="grid">
+    <div class="bg-image" 
+        style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg');
+                height: 100vh">
+    </div>
+
+    <div class="grid">        
         <div class="g-col-4">
             <img
                src="{{$user->avatar ? asset('storage/' . $user->avatar) : asset('images/no-image.png')}}"
