@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ArtistCategory;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Models\ArtistCategory;
 use Illuminate\Validation\Rule;
 
 
@@ -47,8 +47,7 @@ class UserController extends Controller
             'password' => 'required|confirmed|min:6',
             'bio' => 'required|min:50',
         ]);
-
-
+        
 
 
         //store avatar image file
@@ -64,15 +63,14 @@ class UserController extends Controller
         $idUser = $user->id;
 
         //Store Checkboxes Categories
-        $checkboxValues = $request->input('checkboxes');
+        
+        //$checkboxString = implode(',', $checkboxValues);
 
-        /* $checkboxString = implode(',', $checkboxValues);
-
-        $artistCategory = new ArtistCategory();
+        /*$artistCategory = new ArtistCategory();
         $artistCategory->category_id = $checkboxString;
         $artistCategory->user_id = $idUser;
-        $artistCategory->save();
- */
+        $artistCategory->save();*/
+
         $checkboxValues = $request->input('checkboxes');
         foreach ($checkboxValues as $category) {
             $artistCategory = new ArtistCategory();
@@ -80,38 +78,12 @@ class UserController extends Controller
             $artistCategory->user_id = $idUser;
             $artistCategory->save();
         }
+
         //Login
         // using the auth() helper
         auth()->login($user);
 
 
         return redirect('/')->with('message', 'User created successfully and logged in');
-    }
-    //Logout User
-    public function logout(Request $request)
-    {
-        auth()->logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/')->with('message', 'You have benn logged out');
-    }
-    //Login User
-    public function login()
-    {
-        return view('users.login');
-    }
-    //Authenticate User
-    public function authenticate(Request $request)
-    {
-        $formFields = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => 'required'
-            // | = or
-        ]);
-        if (auth()->attempt($formFields)) {
-            $request->session()->regenerate();
-            return redirect('/')->with('message', 'You are now logged in!!');
-        }
-        return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
     }
 }//end of class
