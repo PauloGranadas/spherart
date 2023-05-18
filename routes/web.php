@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,3 +38,6 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 //Show About Us Page
 Route::get('/about', [UserController::class, 'aboutUs']);
+
+// Show Projects page
+Route::get('/projects', [ProjectController::class, 'index']);
