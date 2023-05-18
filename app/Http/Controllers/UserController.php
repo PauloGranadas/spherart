@@ -57,20 +57,16 @@ class UserController extends Controller
         // hash the password using the bcrypt()
         $formFields['password'] = bcrypt($formFields['password']);
 
+        $validateCategory = $request->validate([
+            'checkboxes' => 'required|array|min:1',
+        ]);
+
 
         //create the user
         $user = User::create($formFields);
         $idUser = $user->id;
 
-        //Store Checkboxes Categories
-        
-        //$checkboxString = implode(',', $checkboxValues);
-
-        /*$artistCategory = new ArtistCategory();
-        $artistCategory->category_id = $checkboxString;
-        $artistCategory->user_id = $idUser;
-        $artistCategory->save();*/
-
+        //Store Checkboxes Categories        
         $checkboxValues = $request->input('checkboxes');
         foreach ($checkboxValues as $category) {
             $artistCategory = new ArtistCategory();

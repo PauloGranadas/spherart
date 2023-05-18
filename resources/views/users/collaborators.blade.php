@@ -18,7 +18,7 @@
                     <div class="card-body">
                       <h5 class="card-title">{{$user->nikname}}</h5>
                       <p class="card-text">
-                        {{$user->bio}}                       
+                        {{Str::limit($user->bio, 35)}}                       
                       </p>
                       <p class="card-text">
                         <a href="/collaborators/{{$user->id}}"  class="btn btn-secondary">See Detail</a>
