@@ -11,14 +11,19 @@
                     <img
                       src="{{$user->avatar ? asset('storage/' . $user->avatar) : asset('images/no-image.png')}}"
                       alt="Trendy Pants and Shoes"
-                      class="img-fluid rounded-start"
+                      class="img-fluid rounded-start"                      
                     />
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">
                       <h5 class="card-title">{{$user->nikname}}</h5>
-                      <p class="card-text">
-                        {{Str::limit($user->bio, 35)}}                       
+                      <p class="card-text">           
+
+                        @foreach ($user->categories as $category)
+                          <span class="badge rounded-pill badge-info">{{$category->area_name}}</span> 
+                        @endforeach
+
+                        <span class="d-block"><i class="fas fa-location-dot"></i> {{$user->country}}, {{$user->locality}}</span>                 
                       </p>
                       <p class="card-text">
                         <a href="/collaborators/{{$user->id}}"  class="btn btn-secondary">See Detail</a>

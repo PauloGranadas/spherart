@@ -44,4 +44,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'artist_categories', 'user_id', 'category_id');
+    }
 }

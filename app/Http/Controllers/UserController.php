@@ -14,7 +14,8 @@ class UserController extends Controller
     //Display colaborators
     function showCollaborators()
     {
-        $users = User::all();
+        //$users = User::all();
+        $users = User::with('categories')->get();
         return view('users.collaborators', ['users' => $users]);
     }
     public function aboutUs()
