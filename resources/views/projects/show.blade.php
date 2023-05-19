@@ -85,10 +85,7 @@
         <p class="text-muted mb-0">alex.ray@gmail.com</p>
       </div>
            <!-- Default switch -->
-<div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-  <label class="form-check-label" for="flexSwitchCheckDefault">Active/Unactive</label>
-</div>
+           <button class="toggleButton">Active/ Unactive</button>
 
 
 
@@ -103,11 +100,11 @@
         <p class="fw-bold mb-1">Kate Hunington</p>
         <p class="text-muted mb-0">kate.hunington@gmail.com</p>
       </div>
-               <!-- Default switch -->
-<div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-  <label class="form-check-label" for="flexSwitchCheckDefault">Active/Unactive</label>
-</div>
+     <!-- Default switch -->
+     <button class="toggleButton">Active/ Unactive</button>
+
+
+
 
     </div>
 
@@ -115,6 +112,29 @@
   </li>
 </ul>
 
+<script>
+  const toggleButtons = document.querySelectorAll('.toggleButton');
+
+  toggleButtons.forEach(function(button) {
+    let isActive = false;
+
+    button.addEventListener('click', function() {
+      isActive = !isActive;
+
+      if (isActive) {
+        button.textContent = 'Disactive';
+        // Additional actions for active state
+      } else {
+        button.textContent = 'Active';
+        // Additional actions for disactive state
+      }
+
+      // Make an AJAX request or update the server-side data if necessary
+      // Here, you can send the updated active state to the server using an AJAX request or other means
+      // For simplicity, we won't include the AJAX code in this example
+    });
+  });
+</script>
 
 
 <div class="row">
