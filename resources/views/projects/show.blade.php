@@ -1,55 +1,127 @@
 <x-layoutIndex>
 
-    <h1>Show detail</h1>
+
 
     <nav>
-      <center>
-        <div class="d-inline-flex position-relative">
-        <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
-          <span class="visually-hidden">New alerts</span>
-        </span>
-        <img class="rounded-4 shadow-4" src="https://mdbootstrap.com/img/Photos/Avatars/man2.jpg" alt="Avatar" style="width: 50px; height: 50px;">
-        </div>
-        </center>
-    </nav>
+         </nav>
+<body>
+   
+  
 
-<main class="container">
-     <div class="row">
-            <div class="col-md">
-                <div class="note note-primary ">
-                <strong>Note primary:</strong> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum
-                doloremque officia laboriosam. Itaque ex obcaecati architecto! Qui necessitatibus delectus
-                placeat illo rem id nisi consequatur esse, sint perspiciatis soluta porro?
-                </div>
-            </div>
-
-            <div class="col-md">
-                <div class="note note-secondary">
-              <strong>Note secondary:</strong> Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Cum doloremque officia laboriosam. Itaque ex obcaecati architecto! Qui necessitatibus
-              delectus placeat illo rem id nisi consequatur esse, sint perspiciatis soluta porro?
-            </div>
-            
-        </div>
-        
+<div>
+<div class="row">
+<center>
+         
+         <img class="rounded-4 shadow-4" src="https://mdbootstrap.com/img/Photos/Avatars/man2.jpg" alt="Avatar" style="width: 100px; height: 100px">
+       
+         </center>  
+<div class="col-4">
+    <div class="list-group list-group-light" id="list-tab" role="tablist">
+  
+ 
+      <a class="list-group-item list-group-item-action active px-3 border-0" id="list-home-list"
+        data-mdb-toggle="list" href="#list-home" role="tab" aria-controls="list-home">Home</a>
+      <a class="list-group-item list-group-item-action px-3 border-0" id="list-profile-list"
+        data-mdb-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">Profile</a>
+      <a class="list-group-item list-group-item-action px-3 border-0" id="list-messages-list"
+        data-mdb-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages">Messages</a>
+      <a class="list-group-item list-group-item-action px-3 border-0" id="list-settings-list"
+        data-mdb-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings">Settings</a>
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="list-home" role="tabpanel"
+        aria-labelledby="list-home-list">
+        Some placeholder content in a paragraph relating to "Home". And some more content, used here just to
+        pad out and fill this tab panel. In production, you would obviously have more real content here. And
+        not just text. It could be anything, really. Text, images, forms.
       </div>
+      <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+        Some placeholder content in a paragraph relating to "Profile". And some more content, used here just
+        to pad out and fill this tab panel. In production, you would obviously have more real content here.
+        And not just text. It could be anything, really. Text, images, forms.
+      </div>
+      <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+        Some placeholder content in a paragraph relating to "Messages". And some more content, used here
+        just to pad out and fill this tab panel. In production, you would obviously have more real content
+        here. And not just text. It could be anything, really. Text, images, forms.
+      </div>
+      <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+        Some placeholder content in a paragraph relating to "Settings". And some more content, used here
+        just to pad out and fill this tab panel. In production, you would obviously have more real content
+        here. And not just text. It could be anything, really. Text, images, forms.
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 
-</main>
+<ul class="list-group list-group-light" style= style="width: 600px; height: 600px">
+  <li class="list-group-item d-flex justify-content-lg-evenly align-items-center">
+    <div class="d-flex align-items-center">
+      <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px"
+        class="rounded-circle" />
+      <div class="ms-3">
+        <p class="fw-bold mb-1">John Doe</p>
+        <p class="text-muted mb-0">john.doe@gmail.com</p>
+      </div>
+    </div>
+    <span class="badge rounded-pill badge-success">Active</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-lg-evenly  align-items-center">
+    <div class="d-flex align-items-center">
+      <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" class="rounded-circle" alt=""
+        style="width: 45px; height: 45px" />
+      <div class="ms-3">
+        <p class="fw-bold mb-1">Alex Ray</p>
+        <p class="text-muted mb-0">alex.ray@gmail.com</p>
+      </div>
+    </div>
+    <span class="badge rounded-pill badge-primary">Onboarding</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-lg-evenly  align-items-center">
+    <div class="d-flex align-items-center">
+      <img src="https://mdbootstrap.com/img/new/avatars/7.jpg" class="rounded-circle" alt=""
+        style="width: 45px; height: 45px" />
+      <div class="ms-3">
+        <p class="fw-bold mb-1">Kate Hunington</p>
+        <p class="text-muted mb-0">kate.hunington@gmail.com</p>
+      </div>
+    </div>
+    <span class="badge rounded-pill badge-warning">Awaiting</span>
+  </li>
+</ul>
 
 
-<div class="card">
-  <img
-    src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
-    class="card-img-top"
-    alt="hollywood sign"
-  />
-  <div class="card-body">
-    <h5 class="card-title">Card with stretched link</h5>
-    <p class="card-text">
-      Some quick example text to build on the card title and make up the bulk of the
-      card's content.
-    </p>
-    <a href="#!" class="btn btn-primary stretched-link">Go somewhere</a>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+      <img
+        src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
+        class="card-img-top"
+        alt="hollywood sign"
+      />
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+      <img
+        src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
+        class="card-img-top"
+        alt="hollywood sign"
+      />
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
   </div>
 </div>
 
