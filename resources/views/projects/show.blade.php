@@ -56,6 +56,9 @@
   </div>
 </div>
 </div>
+<div>
+  <center><h1>TEAMMATES</h1></center>
+</div>
 
 <ul class="list-group list-group-light" style= style="width: 600px; height: 600px">
   <li class="list-group-item d-flex justify-content-lg-evenly align-items-center">
@@ -66,8 +69,14 @@
         <p class="fw-bold mb-1">John Doe</p>
         <p class="text-muted mb-0">john.doe@gmail.com</p>
       </div>
+           <!-- Default switch -->
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+  <label class="form-check-label" for="flexSwitchCheckDefault">Active/Unactive</label>
+</div>
+
     </div>
-    <span class="badge rounded-pill badge-success">Active</span>
+   
   </li>
   <li class="list-group-item d-flex justify-content-lg-evenly  align-items-center">
     <div class="d-flex align-items-center">
@@ -77,8 +86,16 @@
         <p class="fw-bold mb-1">Alex Ray</p>
         <p class="text-muted mb-0">alex.ray@gmail.com</p>
       </div>
+           <!-- Default switch -->
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+  <label class="form-check-label" for="flexSwitchCheckDefault">Active/Unactive</label>
+</div>
+
+
+
     </div>
-    <span class="badge rounded-pill badge-primary">Onboarding</span>
+   
   </li>
   <li class="list-group-item d-flex justify-content-lg-evenly  align-items-center">
     <div class="d-flex align-items-center">
@@ -88,10 +105,21 @@
         <p class="fw-bold mb-1">Kate Hunington</p>
         <p class="text-muted mb-0">kate.hunington@gmail.com</p>
       </div>
+     <!-- Default switch -->
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+  <label class="form-check-label" for="flexSwitchCheckDefault">Active/Unactive</label>
+</div>
+
+
+
+
     </div>
-    <span class="badge rounded-pill badge-warning">Awaiting</span>
+
+   
   </li>
 </ul>
+
 
 
 <div class="row">
