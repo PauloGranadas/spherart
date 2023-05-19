@@ -13,4 +13,105 @@
         </center>
     </nav>
 
+<main class="container">
+     <div class="row">
+            <div class="col-md">
+                <div class="note note-primary ">
+                <strong>Note primary:</strong> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum
+                doloremque officia laboriosam. Itaque ex obcaecati architecto! Qui necessitatibus delectus
+                placeat illo rem id nisi consequatur esse, sint perspiciatis soluta porro?
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div class="note note-secondary">
+              <strong>Note secondary:</strong> Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              Cum doloremque officia laboriosam. Itaque ex obcaecati architecto! Qui necessitatibus
+              delectus placeat illo rem id nisi consequatur esse, sint perspiciatis soluta porro?
+            </div>
+            
+        </div>
+        
+      </div>
+
+</main>
+
+</body>
+
+<footer class="bg-light text-center text-white">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: Social media -->
+      <section class="mb-4">
+        <!-- Facebook -->
+        <a
+          class="btn text-white btn-floating m-1"
+          style="background-color: #3b5998;"
+          href="#!"
+          role="button"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+  
+        <!-- Twitter -->
+        <a
+          class="btn text-white btn-floating m-1"
+          style="background-color: #55acee;"
+          href="#!"
+          role="button"
+          ><i class="fab fa-twitter"></i
+        ></a>
+  
+        <!-- Google -->
+        <a
+          class="btn text-white btn-floating m-1"
+          style="background-color: #dd4b39;"
+          href="#!"
+          role="button"
+          ><i class="fab fa-google"></i
+        ></a>
+  
+        <!-- Instagram -->
+        <a
+          class="btn text-white btn-floating m-1"
+          style="background-color: #ac2bac;"
+          href="#!"
+          role="button"
+          ><i class="fab fa-instagram"></i
+        ></a>
+  
+        <!-- Linkedin -->
+        <a
+          class="btn text-white btn-floating m-1"
+          style="background-color: #0082ca;"
+          href="#!"
+          role="button"
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
+        <!-- Github -->
+        <a
+          class="btn text-white btn-floating m-1"
+          style="background-color: #333333;"
+          href="#!"
+          role="button"
+          ><i class="fab fa-github"></i
+        ></a>
+      </section>
+      <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+  
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2023 Copyright:
+      <a class="text-white" href="https://mdbootstrap.com/">Spherart.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+
+<script>
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.js"
+</script>
+
+
 </x-layoutIndex>
