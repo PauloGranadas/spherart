@@ -26,13 +26,13 @@ Route::get('/collaborators', [UserController::class, 'showCollaborators']);
 Route::get('/collaborators/{user}', [UserController::class, 'show']);
 
 //Show Register/Create User Form
-Route::get('/register', [UserController::class, 'create']);
+Route::get('/register', [UserController::class, 'create'])->name('login')->middleware('guest');
 //Create New User
 Route::post('/users', [UserController::class, 'store']);
 //Logout user
-Route::get('/logout', [UserController::class, 'logout'])/* ->middleware('auth') */;
+Route::get('/logout', [UserController::class, 'logout'])->middleware('auth');
 //Show Login Form
-Route::get('/login', [UserController::class, 'login'])/* ->name('login')->middleware('guest') */;
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 //Login
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
