@@ -12,6 +12,9 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.css" rel="stylesheet" />
+    {{-- Google Recaptcha --}}
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    {!! RecaptchaV3::initJs() !!}
 </head>
 
 <body>
