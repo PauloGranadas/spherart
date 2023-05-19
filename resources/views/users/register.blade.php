@@ -110,7 +110,7 @@
                 <br>
                 <input type="file" {{--  --}} class="btn btn-primary" name="avatar" />
                 @error('avatar')
-                <p class="text-danger">{{$message}}</p>
+                 <p class="text-danger">{{$message}}</p>
                 @enderror
             </div>
             <div class="form-outline">
@@ -139,6 +139,19 @@
                 @endif
 
             </div>
+
+            {{-- Google Recaptcha --}}
+            {{-- {!! RecaptchaV3::field('register') !!} --}}
+
+           {{--  @if ($errors->has('g-recaptcha-response'))
+
+                <span class="help-block">
+
+                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+
+                </span>
+
+            @endif --}}
 
 
             <!-- Submit button -->
