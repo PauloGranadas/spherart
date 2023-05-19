@@ -111,7 +111,6 @@
    
   </li>
 </ul>
-
 <script>
   const toggleButtons = document.querySelectorAll('.toggleButton');
 
@@ -129,12 +128,36 @@
         // Additional actions for disactive state
       }
 
-      // Make an AJAX request or update the server-side data if necessary
-      // Here, you can send the updated active state to the server using an AJAX request or other means
-      // For simplicity, we won't include the AJAX code in this example
+      // Make an AJAX request to update the database
+      const buttonId = button.getAttribute('data-id');
+      const url = '/update-status/' + buttonId; // Replace with your actual route URL
+      const data = {
+        isActive: isActive
+      };
+
+      // Send the AJAX request
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        if (response.ok) {
+          console.log('Status updated successfully');
+        } else {
+          console.log('Failed to update status');
+        }
+      })
+      .catch(error => {
+        console.log('Error:', error);
+      });
     });
   });
 </script>
+
 
 
 <div class="row">
