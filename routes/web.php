@@ -41,3 +41,6 @@ Route::get('/about', [UserController::class, 'aboutUs']);
 
 // Show Projects page
 Route::get('/projects', [ProjectController::class, 'index']);
+
+// Show Project Detail page
+Route::get('/projects/id/', [ProjectController::class, 'show']);

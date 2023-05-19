@@ -13,4 +13,8 @@ class ProjectController extends Controller
         $projects = Project::with('user')->get();
         return view('projects.projects', ['projects' => $projects]);
     }
+
+    function show(Project $project){        
+        return view('projects.show', ['project'=>$project]);
+    }
 }
