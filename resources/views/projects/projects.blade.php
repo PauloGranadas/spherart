@@ -6,7 +6,7 @@
             @foreach ($projects as $project)
                 <div class="col">
                     <div class="card">
-                    <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top" alt="Hollywood Sign on The Hill"/>
+                    <img src="{{$project->cover ? asset('storage/' . $project->cover) : asset('images/no-image.png')}}" class="card-img-top" alt="Hollywood Sign on The Hill"/>
                     <div class="card-body">
                         <h5 class="card-title">{{$project->name}}</h5>
                         <p class="card-text">
