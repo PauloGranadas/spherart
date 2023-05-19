@@ -70,7 +70,7 @@
            <!-- Default switch -->
 <div class="form-check form-switch">
   <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-  <label class="form-check-label" for="flexSwitchCheckDefault">Active/Unactive</label>
+  <label class="toggleButton" for="flexSwitchCheckDefault">Active/Unactive</label>
 </div>
 
     </div>
