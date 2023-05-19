@@ -34,9 +34,7 @@ class ProjectController extends Controller
         //store cover image file
         if ($request->hasFile('cover')) {
             $imagePath = $request->file('cover')->store('projects', 'public');
-        }
-       /* $formFields['creator_id']= Auth::id();
-        $formFields['status']= 'upcoming';*/
+        }      
 
         $project = new Project;
         $project->name = $request->name;
@@ -44,12 +42,9 @@ class ProjectController extends Controller
         $project->cover = $imagePath;
         $project->creator_id = Auth::id();
         $project->status = 'upcoming';
-        $project->save();
+        $project->save();       
 
-       // Project::create($formFields);
-
-        return redirect('/projects')->with('message', 'Project created successfully and logged in');
-        
+        return redirect('/projects')->with('message', 'Project created successfully and logged in');       
 
     }
 }

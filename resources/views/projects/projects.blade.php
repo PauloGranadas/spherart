@@ -19,17 +19,19 @@
 
                         <span class="mx-2">
                             <img
-                                src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                                src="{{$project->user->avatar ? asset('storage/' . $project->user->avatar) : asset('images/no-image.png')}}"
                                 class="rounded-circle"
                                 height="25"
                                 alt="Black and White Portrait of a Man"
                                 loading="lazy"
                             />
-                            author:  
+                           <small>{{$project->user->nikname}}</small>   
                         </span>
                         
-                        <a href="" class="btn btn-outline-secondary btn-rounded" data-mdb-ripple-color="dark">Add collaborator</a>
-                        <a href=""  class="btn btn-outline-danger btn-rounded" data-mdb-ripple-color="dark"><i class="fas fa-trash"></i></a>
+                        @auth
+                            <a href="" class="btn btn-outline-secondary btn-rounded" data-mdb-ripple-color="dark">Add collaborator</a>
+                            <a href=""  class="btn btn-outline-danger btn-rounded" data-mdb-ripple-color="dark"><i class="fas fa-trash"></i></a>
+                        @endauth  
                     </div>
                     </div>
                 </div>            
