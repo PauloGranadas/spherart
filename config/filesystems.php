@@ -36,12 +36,12 @@ return [
             'throw' => false,
         ],
 
+        
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL') . '/storage',
+            'root' => storage_path('app/public'), // Set the root path to storage/app/public
+            'url' => env('APP_URL').'/storage', // Set the public URL to access the storage folder
             'visibility' => 'public',
-            'throw' => false,
         ],
 
         's3' => [
