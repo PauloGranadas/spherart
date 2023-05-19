@@ -103,15 +103,11 @@
         <p class="fw-bold mb-1">Kate Hunington</p>
         <p class="text-muted mb-0">kate.hunington@gmail.com</p>
       </div>
-     <!-- Default switch -->
+               <!-- Default switch -->
 <div class="form-check form-switch">
   <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
   <label class="form-check-label" for="flexSwitchCheckDefault">Active/Unactive</label>
-  
 </div>
-
-
-
 
     </div>
 
