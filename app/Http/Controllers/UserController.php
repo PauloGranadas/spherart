@@ -76,6 +76,7 @@ class UserController extends Controller
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => 'required|confirmed|min:6',
             'bio' => 'required|min:50',
+            /* 'g-recaptcha-response' => 'required|recaptchav3:register,0.5' */
         ]);
 
 
@@ -111,5 +112,14 @@ class UserController extends Controller
 
 
         return redirect('/')->with('message', 'User created successfully and logged in');
+    }
+    public function messages()
+    {
+        return [
+            'required' => 'The :attribute field is required.',
+            'email' => 'The :attribute must use a valid email address',
+            'g-recaptcha-response.recaptcha' => 'Captcha verification failed',
+            'g-recaptcha-response.required' => 'Please complete the captcha'
+        ];
     }
 }//end of class

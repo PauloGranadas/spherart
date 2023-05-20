@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProjectController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,4 +44,10 @@ Route::get('/about', [UserController::class, 'aboutUs']);
 Route::get('/projects', [ProjectController::class, 'index']);
 
 // Show Project Detail page
-Route::get('/projects/id/', [ProjectController::class, 'show']);
+Route::get('/projects/{project}', [ProjectController::class, 'show']);
+
+// Show Create Project Page Form
+Route::get('/projects/register', [ProjectController::class, 'create'])->name('projects.create');
+
+//Create New Project
+Route::post('/project', [ProjectController::class, 'store'])->name('projects.store');
