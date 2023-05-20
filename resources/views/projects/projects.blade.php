@@ -19,20 +19,26 @@
                             {{Str::limit($project->description, 70)}}
                         </p>
 
-                        <span class="mx-2">
-                            <img
-                                src="{{$project->user->avatar ? asset('storage/' . $project->user->avatar) : asset('images/no-image.png')}}"
-                                class="rounded-circle"
-                                height="25"
-                                alt="Black and White Portrait of a Man"
-                                loading="lazy"
-                            />
-                           <small>{{$project->user->nikname}}</small>   
+                        <span class="mx-2 d-block"> 
+                            <a href="/collaborators/{{$project->creator_id}}">
+                                <img
+                                    src="{{$project->user->avatar ? asset('storage/' . $project->user->avatar) : asset('images/no-image.png')}}"
+                                    class="rounded-circle"
+                                    height="25"
+                                    width="25"
+                                    alt="Black and White Portrait of a Man"
+                                    loading="lazy"
+                                />                                
+                                <small class="text-body">{{$project->user->nikname}}</small>
+                           </a>   
                         </span>
                         
                         @if (auth()->check() && $project->creator_id === auth()->user()->id)
-                            <a href="" class="btn btn-outline-secondary btn-rounded" data-mdb-ripple-color="dark">Add collaborator</a>
-                            <a href=""  class="btn btn-outline-danger btn-rounded" data-mdb-ripple-color="dark"><i class="fas fa-trash"></i></a>
+                            <div class="d-flex justify-content-end">
+                                <a href="" class="btn btn-outline-secondary btn-rounded" data-mdb-ripple-color="dark">Add collaborator</a>
+                                <a href=""  class="btn btn-outline-danger btn-rounded mx-2" data-mdb-ripple-color="dark"><i class="fas fa-trash"></i></a>
+                                <a href=""  class="btn btn-outline-success btn-rounded" data-mdb-ripple-color="dark"><i class="fas fa-gear"></i></a>
+                            </div>
                         @endif
                     </div>
                     </div>
