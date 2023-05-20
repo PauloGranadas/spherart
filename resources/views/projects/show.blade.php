@@ -63,6 +63,41 @@
           </td>
         </tr>
       </tbody>
-    </table></div>
+    </table>
+  </div>
+
+
+
+  <div class="row">
+  <div class="col-md-8 offset-md-2">
+        <!-- Project Title -->
+        <h1 class="text-center">Project Title</h1>
+        
+        <!-- Cover Image -->
+        <img src="{{$project->cover ? asset('storage/' . $project->cover) : asset('images/no-image.png')}}" class="img-fluid rounded mx-auto d-block mt-4" alt="Cover Image">
+        
+        <!-- Project Description -->
+        <p class="mt-4">Project description goes here.</p>
+        
+        <!-- Categories -->
+        <div class="mt-4">
+          <h5>Categories:</h5>
+          <span class="badge badge-primary">Category 1</span>
+          <span class="badge badge-primary">Category 2</span>
+        </div>
+        
+        <!-- Author -->
+        <div class="mt-4">
+          <h5>Author:</h5>
+          <div class="media">
+            <img src="path/to/author-photo.jpg" class="d-flex align-self-center mr-3 rounded-circle" alt="Author Photo" style="width: 50px;">
+            <div class="media-body">
+              <h6 class="mt-0">Author Name</h6>
+            </div>
+          </div>
+        </div>
+  </div>
+
+
     
     </x-layoutIndex>
