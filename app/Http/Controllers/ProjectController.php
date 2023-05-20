@@ -64,11 +64,6 @@ class ProjectController extends Controller
             'categories' => 'required|array|min:1',
         ]);
 
-
-        //create the user
-        //$user = User::create($formFields);
-        //$idUser = $user->id;
-
         //create project
         $project = new Project;
         $project->name = $request->name;
