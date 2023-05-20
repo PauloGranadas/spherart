@@ -9,7 +9,7 @@
                     alt="Los Angeles Skyscrapers"
                     />
 
-                    <a href="" class="btn btn-secondary btn-rounded my-2">Collaborate with {{$user->nikname}}</a>
+                    <a href="" class="btn btn-warning btn-rounded my-2 fs-6"><i class="fas fa-people-arrows"></i> Collaborate with {{$user->nikname}}</a>
             </div>
             <div class="col-7">        
               
