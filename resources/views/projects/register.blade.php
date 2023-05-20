@@ -47,17 +47,17 @@
             </div>             
 
             <!-- list of categories -->
-            <label for="options" class="form-label">Choose your options of collaboration</label>
+            <label for="options" class="form-label">What you go need for your project</label>
             <div class="checkbox-group border border-secondary rounded p-4 mb-4">
                 @foreach($categories as $category)
                     <label class="btn btn-outline-secondary btn-rounded mb-2">
-                        <input type="checkbox" id="{{$category->id }}" value="{{$category->id}}" name="checkboxes[]" class="d-none">
+                        <input type="checkbox" id="{{$category->id }}" value="{{$category->id}}" name="categories[]" class="d-none">
                         {{$category->area_name}}
                     </label>
                 @endforeach           
             </div>
-            @if($errors->has('checkboxes'))
-                <p class="text-danger">{{ $errors->first('checkboxes') }}</p>
+            @if($errors->has('categories'))
+                <p class="text-danger">{{ $errors->first('categories') }}</p>
             @endif
 
 

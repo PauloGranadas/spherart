@@ -20,4 +20,10 @@ class Project extends Model
     {
         return $this->belongsTo(User::class, 'creator_id');
     }
+
+    function categories()
+    {
+        //'project_id', 'category_id'
+        return $this->belongsToMany(Category::class, 'project_categories');
+    }
 }

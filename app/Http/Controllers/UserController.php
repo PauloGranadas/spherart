@@ -60,8 +60,8 @@ class UserController extends Controller
     public function create()
     {
         //return view('users.register');
-        $checkboxCategories = Category::all();
-        return view('users.register')->with('checkboxCategories', $checkboxCategories);
+        $categories = Category::all();
+        return view('users.register')->with('categories', $categories);
     }
     //Create New User
     public function store(Request $request)
