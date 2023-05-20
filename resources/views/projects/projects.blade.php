@@ -2,13 +2,13 @@
     <div class="container">
         
         @auth
-        <div class="d-flex justify-content-between"> 
-            <a href="/project/create" class="btn btn-primary mt-3">Create new project</a> 
+        <div class="d-flex justify-content-between mt-3"> 
+            <a href="/project/create" class="btn btn-primary">Create new project</a> 
             <div>
-                <form action="{{ route('projects.index') }}" method="GET" style="margin-bottom: 10px;">
-                    <select name="filter" onchange="this.form.submit()">
-                        <option value="user"{{ request('filter') === 'user' || !request('filter') ? ' selected' : '' }}>My Projects</option>
-                        <option value="all"{{ request('filter') === 'all' ? ' selected' : '' }}>All Projects</option>
+                <form action="{{ route('projects.index') }}" method="GET">
+                    <select class="form-select" name="filter" onchange="this.form.submit()">
+                        <option value="user" {{ request('filter') === 'user' || !request('filter') ? ' selected' : '' }} class="bg-primary">My Projects</option>
+                        <option value="all" {{ request('filter') === 'all' ? ' selected' : '' }} class="bg-secondary">All Projects</option>
                     </select>
                 </form>
             </div>

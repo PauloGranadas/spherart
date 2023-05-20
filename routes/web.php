@@ -52,4 +52,5 @@ Route::get('/projects/{project}', [ProjectController::class, 'show']);
 //Create New Project
 Route::post('/project', [ProjectController::class, 'store'])->name('projects.store');
 
+// Show Create Project Page Form
 Route::get('/project/create', [ProjectController::class, 'create']);
