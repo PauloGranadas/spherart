@@ -9,9 +9,29 @@ use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
-    function index()
+    function index(Request $request)
     {
-        $projects = Project::with('user')->get();
+        // if the user is authenticated the value par default is user, if is not is all
+        if (Auth::check()) {
+            $defautValue = 'user'; 
+        }else {
+            $defautValue = 'all'; 
+        }
+
+        // take the value of the input selection filter. 
+        //But in case of not request assume for default 
+        $filter = $request->input('filter', $defautValue);
+        $creator_id = Auth::id();
+
+        if ($filter==='all') {
+            $projects = Project::with('user')->get();
+        }elseif ($filter==='user') {
+            // filter by the user id in where condition
+            $projects = Project::with('user')->where('creator_id', $creator_id)->get();
+        }else{
+            $projects = Project::with('user')->get();
+        }
+
         return view('projects.projects', ['projects' => $projects]);
     }
 
