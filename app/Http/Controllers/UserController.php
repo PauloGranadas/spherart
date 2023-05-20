@@ -24,8 +24,8 @@ class UserController extends Controller
     }
 
     function show(User $user)
-    {
-        return view('users.show', ['user' => $user]);
+    {   
+        return view('users.show', ['user' => $user,'projects'=> $user->projects]);
     }
     //Logout User
     public function logout(Request $request)

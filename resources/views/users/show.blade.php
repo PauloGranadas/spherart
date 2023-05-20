@@ -40,49 +40,36 @@
 
                 <!--Grid row-->
 
-                <p class="fs-5 mt-3">Participation in projects</p>
+            <p class="fs-5 mt-3">Participation in projects</p>
               
-            <div class="row">     
+            <div class="row">            
 
-           
+                @foreach ($projects as $project)
+                    <div class="col-lg-4 mb-2">
+                        <!-- Image with violet mask -->
+                        <div class="bg-image rounded-6">
+                            <a href="/projects/{{$project->id}}">
+                                <img
+                                    src="{{$project->cover ? asset('storage/' . $project->cover) : asset('images/no-image.png')}}"
+                                    class="w-100"
+                                    alt="Alternative text"
+                                />
+                            
+                            <!-- Mask -->
+                            <div class="mask" style=" background: linear-gradient(to bottom, hsla(0, 0%, 0%, 0), hsla(263, 80%, 20%, 0.5));">
+                                <div class="bottom-0 d-flex align-items-end h-100 text-center justify-content-center">
+                                    <div>
+                                        <h4 class="fw-bold text-white mb-4">{{$project->name}}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
 
-            <div class="col-lg-4 mb-4 mb-lg-0">
-                <!-- Image with violet mask -->
-                <div class="bg-image rounded-6">
-                <img
-                    src="https://mdbootstrap.com/img/new/ecommerce/vertical/010.jpg"
-                    class="w-100"
-                    alt="Alternative text"
-                />
-                <!-- Mask -->
-                <div
-                    class="mask"
-                    style="
-                    background: linear-gradient(
-                        to bottom,
-                        hsla(0, 0%, 0%, 0),
-                        hsla(263, 80%, 20%, 0.5)
-                    );
-                    "
-                >
-                    <div
-                    class="
-                        bottom-0
-                        d-flex
-                        align-items-end
-                        h-100
-                        text-center
-                        justify-content-center
-                    "
-                    >
-                    <div>
-                        <h4 class="fw-bold text-white mb-4">Project Music Art</h4>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
+
+        </div>
             <!--Grid row-->
 
 

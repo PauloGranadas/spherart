@@ -46,10 +46,56 @@
                 @enderror
             </div>
 
+            <label for="options" class="form-label">Choose your options of collaboration</label>
+            <div class="checkbox-group border border-secondary rounded p-4 mb-4">
+            
+                <label class="btn btn-outline-secondary btn-rounded">
+                    <input type="checkbox" name="options[]" class="d-none">
+                    Option 1
+                </label>
+
+                <label class="btn btn-outline-secondary btn-rounded">
+                    <input type="checkbox" name="options[]" class="d-none">
+                    Option 2
+                </label>
+
+                <label class="btn btn-outline-secondary btn-rounded">
+                    <input type="checkbox" name="options[]" class="d-none">
+                    Option 3
+                </label>
+            
+            </div>
+
+
+
             <!-- Submit button -->
             <button type="submit" class="btn btn-primary">Create</button>
 
 
         </form>
     </div>
+
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const checkboxGroup = document.querySelector('.checkbox-group');
+      const labels = checkboxGroup.querySelectorAll('label');
+
+      labels.forEach(function(label) {
+        const checkbox = label.querySelector('input[type="checkbox"]');
+
+        label.addEventListener('click', function() {
+          checkbox.checked = !checkbox.checked;
+
+          if (checkbox.checked) {
+            label.classList.add('btn-outline-success');
+          } else {
+            label.classList.remove('btn-outline-success');
+          }
+        });
+        
+      });
+    });
+  </script>
+
 </x-layoutIndex>
