@@ -44,27 +44,21 @@
                 @error('cover')
                 <p class="text-danger">{{$message}}</p>
                 @enderror
-            </div>
+            </div>             
 
+            <!-- list of categories -->
             <label for="options" class="form-label">Choose your options of collaboration</label>
             <div class="checkbox-group border border-secondary rounded p-4 mb-4">
-            
-                <label class="btn btn-outline-secondary btn-rounded">
-                    <input type="checkbox" name="options[]" class="d-none">
-                    Option 1
-                </label>
-
-                <label class="btn btn-outline-secondary btn-rounded">
-                    <input type="checkbox" name="options[]" class="d-none">
-                    Option 2
-                </label>
-
-                <label class="btn btn-outline-secondary btn-rounded">
-                    <input type="checkbox" name="options[]" class="d-none">
-                    Option 3
-                </label>
-            
+                @foreach($categories as $category)
+                    <label class="btn btn-outline-secondary btn-rounded mb-2">
+                        <input type="checkbox" id="{{$category->id }}" value="{{$category->id}}" name="checkboxes[]" class="d-none">
+                        {{$category->area_name}}
+                    </label>
+                @endforeach           
             </div>
+            @if($errors->has('checkboxes'))
+                <p class="text-danger">{{ $errors->first('checkboxes') }}</p>
+            @endif
 
 
 

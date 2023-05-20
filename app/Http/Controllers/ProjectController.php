@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Project;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -40,8 +41,9 @@ class ProjectController extends Controller
     }
 
     public function create()
-    {           
-        return view('projects.register');
+    {   
+        $categories = Category::all();     
+        return view('projects.register')->with('categories',$categories);
     }
 
     public function store(Request $request){
