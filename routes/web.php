@@ -41,7 +41,7 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::get('/about', [UserController::class, 'aboutUs']);
 
 // Show Projects page
-Route::get('/projects', [ProjectController::class, 'index']);
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
 
 // Show Project Detail page
 Route::get('/projects/{project}', [ProjectController::class, 'show']);

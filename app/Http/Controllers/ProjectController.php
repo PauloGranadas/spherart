@@ -12,11 +12,10 @@ class ProjectController extends Controller
     function index(Request $request)
     {
         // if the user is authenticated the value par default is user, if is not is all
-        if (Auth::check()) {
+        $defautValue = 'all'; 
+        if (Auth::check()) 
             $defautValue = 'user'; 
-        }else {
-            $defautValue = 'all'; 
-        }
+        
 
         // take the value of the input selection filter. 
         //But in case of not request assume for default 
@@ -34,6 +33,7 @@ class ProjectController extends Controller
 
         return view('projects.projects', ['projects' => $projects]);
     }
+
 
     function show(Project $project){        
         return view('projects.show', ['project'=>$project]);
