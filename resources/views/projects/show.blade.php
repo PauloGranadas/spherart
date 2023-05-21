@@ -1,31 +1,32 @@
 <x-layoutIndex>
-    <style>
-        .container{
-            width: 60%;
-        }
-        .container h1 {
-            margin-top: 10%;
-            margin-bottom:7%;
-            text-align:center;
-        }
-        .container p{
-            text-align: center;
-            margin-bottom: 7%;
-        }
-        #project_showcase{
-            margin-bottom:7%;
-            align-items: center;
-        }
     
-    </style>
     <div class="container">
-        <h1>{{$project->name}}</h1>
+       
+      <div class="position-relative">
+        <!--Images to showcase the project-->
+        <img src="{{$project->cover ? asset('storage/' . $project->cover) : asset('images/no-image.png')}}" class="img-fluid rounded mx-auto d-block mt-4" alt="Cover Image" id="project_showcase" style="object-fit: cover; max-height: 500px; width: 100%;"/>
+      
+        <div class="position-absolute top-0 end-0 bg-dark text-white p-3 h-100" style="max-width: 30%; min-width: 20%; border-top-right-radius: 5px; border-bottom-right-radius: 5px; opacity: 0.8;">
+          <!-- Project Title -->
+          <h2>{{$project->name}}</h1>
+          
+          <!-- Author -->
+          <div class="mt-4">
+            <span>Author:</span>
+            <div class="media">
+              <img src="path/to/author-photo.jpg" class="d-flex align-self-center mr-3 rounded-circle" alt="Author Photo" style="width: 50px;">
+              <div class="media-body">
+                <h6 class="mt-0">Author Name</h6>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
      <!-- Project Explanations-->
-    <p class="text-lowercase" >{{$project->description}}</p>
-    
-     <!--Images to showcase the project-->
-     <img src="{{$project->cover ? asset('storage/' . $project->cover) : asset('images/no-image.png')}}" class="img-fluid" alt="Wild Landscape" id="project_showcase"/>
-    
+    <p class="mt-4" >{{$project->description}}</p>
+
      <!--Collaborators of the project-->
         <table class="table align-middle mb-0 bg-white">
       <thead class="bg-light">
@@ -70,14 +71,7 @@
 
   <div class="row">
   <div class="col-md-8 offset-md-2">
-        <!-- Project Title -->
-        <h1 class="text-center">Project Title</h1>
-        
-        <!-- Cover Image -->
-        <img src="{{$project->cover ? asset('storage/' . $project->cover) : asset('images/no-image.png')}}" class="img-fluid rounded mx-auto d-block mt-4" alt="Cover Image">
-        
-        <!-- Project Description -->
-        <p class="mt-4">Project description goes here.</p>
+       
         
         <!-- Categories -->
         <div class="mt-4">
