@@ -94,4 +94,8 @@ class ProjectController extends Controller
         $collaborators = User::all();
         return view('projects.add', ['project'=>$project, 'collaborators'=>$collaborators ]);
     }
+
+    function storeCollaborator(){
+        
+    }
 }

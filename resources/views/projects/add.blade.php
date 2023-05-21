@@ -53,11 +53,11 @@
                     @endforeach
                 </td>
                 <td>
-                <form action="" method="post">
-                    <button type="button" class="btn btn btn-warning btn-sm btn-rounded">
-                        collaborate <i class="fas fa-people-arrows"></i>
-                    </button>  
-                </form>              
+                    <form action="{{route('project.collaborator.store', [$project, $collaborator])}}" method="post">
+                        <button type="submit" class="btn btn btn-warning btn-sm btn-rounded">
+                            collaborate <i class="fas fa-people-arrows"></i>
+                        </button>  
+                    </form>              
                 </td>
             </tr>
             @endforeach

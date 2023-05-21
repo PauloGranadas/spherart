@@ -47,7 +47,10 @@ Route::get('/projects', [ProjectController::class, 'index'])->name('projects.ind
 Route::get('/projects/{project}', [ProjectController::class, 'show']);
 
 // Show to Add Collaborator Page for a Project selected
-Route::get('/projects/{project}/add', [ProjectController::class, 'createCollaborator'])->name('create.collaborator');
+Route::get('/projects/{project}/add', [ProjectController::class, 'createCollaborator'])->name('project.collaborator.create');
+
+// Store Add Collaborator a Project selected
+Route::get('/projects/{project}/add', [ProjectController::class, 'storeCollaborator'])->name('project.collaborator.store');
 
 // Show Create Project Page Form
 //Route::get('/projects/register', [ProjectController::class, 'create']);
