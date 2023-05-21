@@ -45,7 +45,7 @@
                         
                         @if (auth()->check() && $project->creator_id === auth()->user()->id)
                             <div class="d-flex justify-content-end">
-                                <a href="" class="btn btn-outline-secondary btn-rounded" data-mdb-ripple-color="dark">Add collaborator</a>
+                                <a href="/projects/{{$project->id}}/add" class="btn btn-outline-secondary btn-rounded" data-mdb-ripple-color="dark">Add collaborator</a>
                                 <a href=""  class="btn btn-outline-danger btn-rounded mx-2" data-mdb-ripple-color="dark"><i class="fas fa-trash"></i></a>
                                 <a href=""  class="btn btn-outline-success btn-rounded" data-mdb-ripple-color="dark"><i class="fas fa-gear"></i></a>
                             </div>

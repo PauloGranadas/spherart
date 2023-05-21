@@ -2,10 +2,11 @@
     
     <div class="container">
 
-      <div class="text-right">
-        <a href="/projects/{{$project->id}}/add" class="btn btn-warning btn-rounded my-2 fs-6"><i class="fas fa-people-arrows"></i> add Collaborator</a>
-      </div>
-
+      @auth
+        <div class="text-right">
+          <a href="/projects/{{$project->id}}/add" class="btn btn-warning btn-rounded my-2 fs-6"><i class="fas fa-people-arrows"></i> add Collaborator</a>
+        </div>
+      @endauth
       <div class="position-relative">
         <!--Images to showcase the project-->
         <img src="{{$project->cover ? asset('storage/' . $project->cover) : asset('images/no-image.png')}}" class="img-fluid rounded mx-auto d-block mt-4" alt="Cover Image" id="project_showcase" style="object-fit: cover; max-height: 500px; width: 100%;"/>

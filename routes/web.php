@@ -47,7 +47,7 @@ Route::get('/projects', [ProjectController::class, 'index'])->name('projects.ind
 Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('project.show');
 
 // Show to Add Collaborator Page for a Project selected
-Route::get('/projects/{project}/add', [ProjectController::class, 'createCollaborator'])->name('project.collaborator.create');
+Route::get('/projects/{project}/add', [ProjectController::class, 'createCollaborator'])->name('project.collaborator.create')->middleware('auth');
 
 // Store Add Collaborator a Project selected
 Route::post('/projects/{project}/add/{collaborator}', [ProjectController::class, 'storeCollaborator'])->name('projects.collaborators.store');
