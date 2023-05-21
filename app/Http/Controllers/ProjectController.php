@@ -90,7 +90,8 @@ class ProjectController extends Controller
 
     }
 
-    function createCollaborator(){
-        return view('projects.add');
+    function createCollaborator(Project $project){
+        $collaborators = User::all();
+        return view('projects.add', ['project'=>$project, 'collaborators'=>$collaborators ]);
     }
 }

@@ -3,7 +3,7 @@
     <div class="container">
 
       <div class="text-right">
-        <a href="" class="btn btn-warning btn-rounded my-2 fs-6"><i class="fas fa-people-arrows"></i> add Collaborator</a>
+        <a href="/projects/{{$project->id}}/add" class="btn btn-warning btn-rounded my-2 fs-6"><i class="fas fa-people-arrows"></i> add Collaborator</a>
       </div>
 
       <div class="position-relative">
@@ -33,7 +33,7 @@
     <p class="mt-4" >{{$project->description}}</p>
 
      <!--Collaborators of the project-->
-        <table class="table align-middle mb-0 bg-white">
+    <table class="table align-middle mb-0 bg-white">
       <thead class="bg-light">
         <tr>
           <th>Collaborators</th>
