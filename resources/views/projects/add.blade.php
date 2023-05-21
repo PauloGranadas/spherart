@@ -53,7 +53,8 @@
                     @endforeach
                 </td>
                 <td>
-                    <form action="{{route('project.collaborator.store', [$project, $collaborator])}}" method="post">
+                    <form action="{{ route('projects.collaborators.store', [$project, $collaborator]) }}" method="POST">
+                        @csrf
                         <button type="submit" class="btn btn btn-warning btn-sm btn-rounded">
                             collaborate <i class="fas fa-people-arrows"></i>
                         </button>  

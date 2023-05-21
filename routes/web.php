@@ -44,13 +44,13 @@ Route::get('/about', [UserController::class, 'aboutUs']);
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
 
 // Show Project Detail page
-Route::get('/projects/{project}', [ProjectController::class, 'show']);
+Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('project.show');
 
 // Show to Add Collaborator Page for a Project selected
 Route::get('/projects/{project}/add', [ProjectController::class, 'createCollaborator'])->name('project.collaborator.create');
 
 // Store Add Collaborator a Project selected
-Route::get('/projects/{project}/add', [ProjectController::class, 'storeCollaborator'])->name('project.collaborator.store');
+Route::get('/projects/{project}/collaborators/{collaborator}', [ProjectController::class, 'storeCollaborator'])->name('projects.collaborators.store');
 
 // Show Create Project Page Form
 //Route::get('/projects/register', [ProjectController::class, 'create']);

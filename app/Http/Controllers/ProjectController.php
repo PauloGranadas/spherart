@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Project;
 use App\Models\Category;
 use App\Models\ProjectCategory;
+use App\Models\ProjectMember;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -95,7 +96,17 @@ class ProjectController extends Controller
         return view('projects.add', ['project'=>$project, 'collaborators'=>$collaborators ]);
     }
 
-    function storeCollaborator(){
-        
+    function storeCollaborator(Request $request, Project $project, User $collaborator){
+
+        //$collaborator->project_id = $project->id;
+
+        // insert in the table 
+        $project->members->attach($collaborator, [
+            'member_type'=>'collaborator',
+            'status'=>'pending'
+        ]);
+
+        return redirect()->route('project.show', $project);
+    
     }
 }
