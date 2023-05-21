@@ -89,4 +89,8 @@ class ProjectController extends Controller
         return redirect('/projects')->with('message', 'Project created successfully and logged in');       
 
     }
+
+    function createCollaborator(){
+        return view('projects.add');
+    }
 }

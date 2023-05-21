@@ -7,9 +7,7 @@
                 src="{{$user->avatar ? asset('storage/' . $user->avatar) : asset('images/no-image.png')}}"
                     class="img-thumbnail hover-shadow"
                     alt="Los Angeles Skyscrapers"
-                    />
-
-                    <a href="" class="btn btn-warning btn-rounded my-2 fs-6"><i class="fas fa-people-arrows"></i> Collaborate with {{$user->nikname}}</a>
+                    />                    
             </div>
             <div class="col-7">        
               
