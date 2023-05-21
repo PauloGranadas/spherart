@@ -28,6 +28,7 @@
                       </p>
                       <p class="card-text">
                         <a href="/collaborators/{{$user->id}}"  class="btn btn-secondary">See Detail</a>
+                        <a href="" class="btn btn-warning"><i class="fas fa-people-arrows"></i></a>
                       </p>
                     </div>
                   </div>

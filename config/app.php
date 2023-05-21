@@ -171,7 +171,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         //Recapcha Google
-        Biscolab\ReCaptcha\ReCaptchaServiceProvider::class,
+       // Biscolab\ReCaptcha\ReCaptchaServiceProvider::class,
 
     ])->toArray(),
 
@@ -188,7 +188,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         //Recaptcha Google
-        'ReCaptcha' => Biscolab\ReCaptcha\Facades\ReCaptcha::class,
+        //'ReCaptcha' => Biscolab\ReCaptcha\Facades\ReCaptcha::class,
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
