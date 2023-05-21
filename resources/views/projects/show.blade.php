@@ -29,11 +29,19 @@
         </div>
       </div>
 
-     <!-- Project Explanations-->
+    <!-- Categories -->
+    <div class="mt-4">
+      <h5>Project demands</h5>
+      @foreach ($project->categories as $category)
+        <span class="badge rounded-pill badge-info px-4 py-2 h2">{{$category->area_name}}</span> 
+      @endforeach          
+    </div>
+
+    <!-- Project Explanations-->
     <p class="mt-4" >{{$project->description}}</p>
 
      <!--Collaborators of the project-->
-    <table class="table align-middle mb-0 bg-white">
+    <table class="table align-middle my-3 bg-white">
       <thead class="bg-light">
         <tr>
           <th>Collaborators</th>
@@ -61,7 +69,8 @@
               </div>
             </td>
             <td>
-              <p class="fw-normal mb-1">{{$collaborator->member_type}}</p>
+              <span class="badge rounded-pill badge-info px-4 py-2 h2 mx-3">{{$collaborator->status}}</span> 
+              <span class="fw-normal mb-1">{{$collaborator->member_type}}</span>
             </td>
             <td>
               <button type="button" class="btn btn-link btn-sm btn-rounded">
@@ -74,22 +83,5 @@
       </tbody>
     </table>
   </div>
-
-
-
-  <div class="row">
-  <div class="col-md-8 offset-md-2">
-       
-        
-        <!-- Categories -->
-        <div class="mt-4">
-          <h5>Categories:</h5>
-          <span class="badge badge-primary">Category 1</span>
-          <span class="badge badge-primary">Category 2</span>
-        </div>
-       
-  </div>
-
-
-    
-    </x-layoutIndex>
+   
+</x-layoutIndex>

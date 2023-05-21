@@ -92,7 +92,11 @@ class ProjectController extends Controller
     }
 
     function createCollaborator(Project $project){
-        $collaborators = User::all();
+
+        // take all collaborator alredy associed to the project in one array
+        $collaboratorsOfProject = $project->members->pluck('user_id')->toArray();
+        $collaborators = User::whereNotIN('id', $collaboratorsOfProject)->get();
+        
         return view('projects.add', ['project'=>$project, 'collaborators'=>$collaborators ]);
     }
 
@@ -101,10 +105,18 @@ class ProjectController extends Controller
         //$collaborator->project_id = $project->id;
 
         // insert in the table 
-        $project->members->attach($collaborator, [
+        /*$project->members->attach($collaborator, [
             'member_type'=>'collaborator',
             'status'=>'pending'
-        ]);
+        ]);*/
+
+        //create project
+        $projectMember = new ProjectMember;
+        $projectMember->user_id = $collaborator->id;
+        $projectMember->project_id = $project->id;
+        $projectMember->member_type = 'collaborator';
+        $projectMember->status = 'pending';       
+        $projectMember->save();  
 
         return redirect()->route('project.show', $project);
     

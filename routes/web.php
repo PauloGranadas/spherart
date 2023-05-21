@@ -50,7 +50,7 @@ Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('pro
 Route::get('/projects/{project}/add', [ProjectController::class, 'createCollaborator'])->name('project.collaborator.create');
 
 // Store Add Collaborator a Project selected
-Route::get('/projects/{project}/collaborators/{collaborator}', [ProjectController::class, 'storeCollaborator'])->name('projects.collaborators.store');
+Route::post('/projects/{project}/add/{collaborator}', [ProjectController::class, 'storeCollaborator'])->name('projects.collaborators.store');
 
 // Show Create Project Page Form
 //Route::get('/projects/register', [ProjectController::class, 'create']);
