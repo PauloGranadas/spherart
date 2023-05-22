@@ -85,7 +85,15 @@ class ProjectController extends Controller
             $projectCategory->category_id = $category;
             $projectCategory->project_id = $idProject;
             $projectCategory->save();
-        }            
+        }
+        
+        // also the creator of the project is add like a member of that project like administrator
+        $projectMember = new ProjectMember;
+        $projectMember->user_id = Auth::id();
+        $projectMember->project_id = $idProject;
+        $projectMember->member_type = 'admin';
+        $projectMember->status = 'accept';       
+        $projectMember->save();   
 
         return redirect('/projects')->with('message', 'Project created successfully and logged in');       
 
@@ -96,7 +104,7 @@ class ProjectController extends Controller
         // take all collaborator alredy associed to the project in one array
         $collaboratorsOfProject = $project->members->pluck('user_id')->toArray();
         $collaborators = User::whereNotIN('id', $collaboratorsOfProject)->get();
-        
+
         return view('projects.add', ['project'=>$project, 'collaborators'=>$collaborators ]);
     }
 
