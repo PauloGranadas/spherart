@@ -27,8 +27,7 @@
                         <span class="d-block"><i class="fas fa-location-dot"></i> {{$user->country}}, {{$user->locality}}</span>                 
                       </p>
                       <p class="card-text">
-                        <a href="/collaborators/{{$user->id}}"  class="btn btn-secondary">See Detail</a>
-                        <a href="" class="btn btn-warning"><i class="fas fa-people-arrows"></i></a>
+                        <a href="/collaborators/{{$user->id}}"  class="btn btn-secondary">See Detail</a>                        
                       </p>
                     </div>
                   </div>

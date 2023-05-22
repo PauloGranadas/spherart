@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Project;
 use App\Models\Category;
 use App\Models\ProjectCategory;
+use App\Models\ProjectMember;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -84,9 +85,48 @@ class ProjectController extends Controller
             $projectCategory->category_id = $category;
             $projectCategory->project_id = $idProject;
             $projectCategory->save();
-        }            
+        }
+        
+        // also the creator of the project is add like a member of that project like administrator
+        $projectMember = new ProjectMember;
+        $projectMember->user_id = Auth::id();
+        $projectMember->project_id = $idProject;
+        $projectMember->member_type = 'admin';
+        $projectMember->status = 'accept';       
+        $projectMember->save();   
 
         return redirect('/projects')->with('message', 'Project created successfully and logged in');       
 
+    }
+
+    function createCollaborator(Project $project){
+
+        // take all collaborator alredy associed to the project in one array
+        $collaboratorsOfProject = $project->members->pluck('user_id')->toArray();
+        $collaborators = User::whereNotIN('id', $collaboratorsOfProject)->get();
+
+        return view('projects.add', ['project'=>$project, 'collaborators'=>$collaborators ]);
+    }
+
+    function storeCollaborator(Request $request, Project $project, User $collaborator){
+
+        //$collaborator->project_id = $project->id;
+
+        // insert in the table 
+        /*$project->members->attach($collaborator, [
+            'member_type'=>'collaborator',
+            'status'=>'pending'
+        ]);*/
+
+        //create project
+        $projectMember = new ProjectMember;
+        $projectMember->user_id = $collaborator->id;
+        $projectMember->project_id = $project->id;
+        $projectMember->member_type = 'collaborator';
+        $projectMember->status = 'pending';       
+        $projectMember->save();  
+
+        return redirect()->route('project.show', $project);
+    
     }
 }
