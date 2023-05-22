@@ -11,7 +11,7 @@
         </header>
     </div>
     <div class="container">
-        <form method="POST" action="/users" enctype="multipart/form-data">
+        <form method="POST" action="{{route('users.store')}}" enctype="multipart/form-data">
             @csrf
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-4">
@@ -108,7 +108,7 @@
                     Image Profile
                 </label>
                 <br>
-                <input type="file" {{--  --}} class="btn btn-primary" name="avatar" />
+                <input type="file" class="btn btn-primary" name="avatar" />
                 @error('avatar')
                  <p class="text-danger">{{$message}}</p>
                 @enderror
@@ -121,15 +121,11 @@
                 @enderror
             </div>
 
-            <!-- Checkbox -->
-            <h3>Choose your arts category/categories:</h3>
+            <!-- Checkbox -->           
 
-            @include('partials._categories')
+            @include('partials._categories');       
+
             
-
-            {{-- Google Recaptcha --}}
-            {{-- @captcha --}}
-
 
             <!-- Submit button -->
             <button type="submit" class="btn btn-primary">Sign up</button>

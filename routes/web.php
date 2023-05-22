@@ -29,7 +29,7 @@ Route::get('/collaborators/{user}', [UserController::class, 'show']);
 //Show Register/Create User Form
 Route::get('/register', [UserController::class, 'create'])->name('login')->middleware('guest');
 //Create New User
-Route::post('/users', [UserController::class, 'store']);
+Route::post('/users', [UserController::class, 'store'])->name('users.store');
 //Logout user
 Route::get('/logout', [UserController::class, 'logout'])->middleware('auth');
 //Show Login Form
