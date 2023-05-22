@@ -17,7 +17,8 @@
                         </button>                    
                 </form>
             </div>            
-        </div>
+
+         </div>
 
         <!--Collaborators for the project-->
         <table class="table align-middle mb-0 bg-white">

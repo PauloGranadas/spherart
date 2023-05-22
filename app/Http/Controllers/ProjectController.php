@@ -10,6 +10,8 @@ use App\Models\ProjectMember;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
+
 class ProjectController extends Controller
 {
     function index(Request $request)
@@ -127,7 +129,35 @@ class ProjectController extends Controller
         $projectMember->save();  
 
         return redirect()->route('project.show', $project);
+
+       function search(Request $request)
+        {
+            $keyword = $request->input('keyword');
+       
+            $results = User::where('nikname', 'like', "%$keyword%")
+                            ->get();
+                    return view('search.results', compact('results', 'keyword'));
+            }
+        
+       
+    /*function search(Request $request)
+    {
+    $keyword = $request->input('keyword');
+
+    $results = User::where('nikname', 'like', "%$keyword%")
     
+    ->get();
+
+    $filteredResults = $results->filter(function ($result) use ($keyword) {
+        return stripos($result->nikname, $keyword) !== false;
+    });
+
+    return view('search.results', compact('filteredResults', 'keyword'));
+    }*/
+
+
+
+
+
     }
 }
-
