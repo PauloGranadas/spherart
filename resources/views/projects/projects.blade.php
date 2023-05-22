@@ -7,8 +7,8 @@
             <div>
                 <form action="{{ route('projects.index') }}" method="GET">
                     <select class="form-select" name="filter" onchange="this.form.submit()">
-                        <option value="user" {{ request('filter') === 'user' || !request('filter') ? ' selected' : '' }} class="bg-primary">My Projects</option>
-                        <option value="all" {{ request('filter') === 'all' ? ' selected' : '' }} class="bg-secondary">All Projects</option>
+                        <option value="user" {{ request('filter') === 'user' || !request('filter') ? ' selected' : '' }}>My Projects</option>
+                        <option value="all" {{ request('filter') === 'all' ? ' selected' : '' }}>All Projects</option>
                     </select>
                 </form>
             </div>
