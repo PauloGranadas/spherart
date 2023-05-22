@@ -41,13 +41,16 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::get('/about', [UserController::class, 'aboutUs']);
 
 // Show Projects page
-Route::get('/projects', [ProjectController::class, 'index']);
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
 
 // Show Project Detail page
 Route::get('/projects/{project}', [ProjectController::class, 'show']);
 
 // Show Create Project Page Form
-Route::get('/projects/register', [ProjectController::class, 'create'])->name('projects.create');
+//Route::get('/projects/register', [ProjectController::class, 'create']);
 
 //Create New Project
 Route::post('/project', [ProjectController::class, 'store'])->name('projects.store');
+
+// Show Create Project Page Form
+Route::get('/project/create', [ProjectController::class, 'create']);

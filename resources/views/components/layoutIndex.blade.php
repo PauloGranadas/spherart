@@ -12,9 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.css" rel="stylesheet" />
-    {{-- Google Recaptcha --}}
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-    {!! RecaptchaV3::initJs() !!}
+    
 </head>
 
 <body>
@@ -100,7 +98,7 @@
                     @auth
                     <div class="dropdown" style="color: rgb(255, 255, 255);">
                         <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                           <span class="mb-2 mb-lg-0"> Welcome {{auth()->user()->nikname}}</span><i class="fa-solid fa-gear"></i>
+                           <span class="mb-2 mb-lg-0"> Welcome {{auth()->user()->nikname}}</span> <i class="fa-solid fa-gear"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                             <li>

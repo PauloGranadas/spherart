@@ -24,8 +24,8 @@ class UserController extends Controller
     }
 
     function show(User $user)
-    {
-        return view('users.show', ['user' => $user]);
+    {   
+        return view('users.show', ['user' => $user,'projects'=> $user->projects]);
     }
     //Logout User
     public function logout(Request $request)
@@ -60,8 +60,8 @@ class UserController extends Controller
     public function create()
     {
         //return view('users.register');
-        $checkboxCategories = Category::all();
-        return view('users.register')->with('checkboxCategories', $checkboxCategories);
+        $categories = Category::all();
+        return view('users.register')->with('categories', $categories);
     }
     //Create New User
     public function store(Request $request)
