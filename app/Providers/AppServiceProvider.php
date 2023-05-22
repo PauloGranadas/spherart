@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
@@ -26,6 +27,8 @@ class AppServiceProvider extends ServiceProvider
         //
         Model::unguard();
         //For Google Recaptcha
-        Validator::extend('recaptcha', 'App\\Validators\\ReCaptcha@validate');
+        Blade::directive('captcha', function () {
+            return '<div class="g-recaptcha" data-sitekey="' . config('recaptcha.site_key') . '"></div>';
+        });
     }
 }

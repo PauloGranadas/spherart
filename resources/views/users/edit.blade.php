@@ -17,7 +17,7 @@
             <div class="row mb-4">
                 <div class="col">
                     <div class="form-outline">
-                        <input type="text" id="form3Example1" class="form-control" name="firstname" value="{{old('firstname')}}" />
+                        <input type="text" id="form3Example1" class="form-control" name="firstname" value="{{$user->firstname}}" />
                         <label class="form-label" for="form3Example1">First name</label>
                         @error('firstname')
                         <p class="text-danger">{{$message}}</p>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="col">
                     <div class="form-outline">
-                        <input type="text" id="form3Example2" class="form-control" name="lastname" value="{{old('lastname')}}" />
+                        <input type="text" id="form3Example2" class="form-control" name="lastname" value="{{$user->lastname}}" />
                         <label class="form-label" for="form3Example2">Last name</label>
                         @error('lastname')
                         <p class="text-danger">{{$message}}</p>
@@ -38,7 +38,7 @@
             <div class="row mb-4">
                 <div class="col">
                     <div class="form-outline">
-                        <input type="text" id="form3Example3" class="form-control" name="nikname" value="{{old('nikname')}}" />
+                        <input type="text" id="form3Example3" class="form-control" name="nikname" value="{{$user->nickname}}" />
                         <label class="form-label" for="form3Example3">Nickname</label>
                         @error('nikname')
                         <p class="text-danger">{{$message}}</p>
@@ -48,7 +48,7 @@
 
                 <div class="col">
                     <div class="form-outline">
-                        <input type="text" id="form3Example4" class="form-control" name="country" value="{{old('country')}}" />
+                        <input type="text" id="form3Example4" class="form-control" name="country" value="{{$user->country}}" />
                         <label class="form-label" for="form3Example4">Country</label>
                         @error('country')
                         <p class="text-danger">{{$message}}</p>
@@ -61,7 +61,7 @@
                 <div class="col">
                     <!-- Email input -->
                     <div class="form-outline mb-4">
-                        <input type="email" id="form3Example5" class="form-control" name="email" value="{{old('email')}}" />
+                        <input type="email" id="form3Example5" class="form-control" name="email" value="{{$user->email}}" />
                         <label class="form-label" for="form3Example5">Email address</label>
                         @error('email')
                         <p class="text-danger">{{$message}}</p>
@@ -71,7 +71,7 @@
 
                 <div class="col">
                     <div class="form-outline mb-4">
-                        <input type="text" id="form3Example8" class="form-control" name="locality" value="{{old('locality')}}" />
+                        <input type="text" id="form3Example8" class="form-control" name="locality" value="{{$user->locality}}" />
                         <label class="form-label" for="form3Example8">Locality</label>  
                         @error('locality')
                         <span class="text-danger mt-0">{{$message}}</span>
@@ -85,7 +85,7 @@
             <div class="row mb-4">
                 <div class="col">
                     <div class="form-outline mb-4">
-                        <input type="password" id="form3Example6" class="form-control" name="password" value="{{old('password')}}" />
+                        <input type="password" id="form3Example6" class="form-control" name="password" value="{{$user->password}}" />
                         <label class="form-label" for="form3Example6">Password</label>
                     </div>
                     @error('password')
@@ -94,7 +94,7 @@
                 </div>
                 <div class="col">
                     <div class="form-outline mb-4">
-                        <input type="password" id="form3Example7" class="form-control" name="password_confirmation" value="{{old('password_confirmation')}}" />
+                        <input type="password" id="form3Example7" class="form-control" name="password_confirmation" value="" />
                         <label class="form-label" for="form3Example7">Confirm Password</label>
                     </div>
                     @error('password_confirmation')
@@ -114,7 +114,7 @@
                 @enderror
             </div>
             <div class="form-outline">
-                <textarea class="form-control" id="textAreaExample" rows="4" name="bio">{{old('bio')}}</textarea>
+                <textarea class="form-control" id="textAreaExample" rows="4" name="bio">{{$user->bio}}</textarea>
                 <label class="form-label" for="textAreaExample">Bio (50 characters min.)</label>                
                 @error('bio')
                 <p class="text-danger">{{$message}}</p>

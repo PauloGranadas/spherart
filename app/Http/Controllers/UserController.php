@@ -24,8 +24,8 @@ class UserController extends Controller
     }
 
     function show(User $user)
-    {   
-        return view('users.show', ['user' => $user,'projects'=> $user->projects]);
+    {
+        return view('users.show', ['user' => $user, 'projects' => $user->projects]);
     }
     //Logout User
     public function logout(Request $request)
@@ -76,7 +76,7 @@ class UserController extends Controller
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => 'required|confirmed|min:6',
             'bio' => 'required|min:50',
-            /* 'g-recaptcha-response' => 'required|recaptchav3:register,0.5' */
+            /* 'g-recaptcha-response' => 'required|recaptcha', */
         ]);
 
 
@@ -113,6 +113,13 @@ class UserController extends Controller
 
         return redirect('/')->with('message', 'User created successfully and logged in');
     }
+    //Show Edit Form
+    public function edit(User $user)
+    {
+        $categories = Category::all();
+        return view('users.edit', ['user' => $user, 'categories' => $categories]);
+    }
+
     public function messages()
     {
         return [
