@@ -110,7 +110,7 @@
                 <br>
                 <input type="file" {{--  --}} class="btn btn-primary" name="avatar" />
                 @error('avatar')
-                <p class="text-danger">{{$message}}</p>
+                 <p class="text-danger">{{$message}}</p>
                 @enderror
             </div>
             <div class="form-outline">
@@ -127,10 +127,10 @@
 
             <!-- Checked checkbox -->
             <div class="row">            
-                @foreach($checkboxCategories as $checkbox)
+                @foreach($categories as $category)
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="{{$checkbox->id }}" name="checkboxes[]" value="{{$checkbox->id}}">
-                        <label class="form-check-label" for="{{$checkbox->id}}">{{$checkbox->area_name}}</label>
+                        <input class="form-check-input" type="checkbox" id="{{$category->id }}" name="checkboxes[]" value="{{$category->id}}">
+                        <label class="form-check-label" for="{{$category->id}}">{{$category->area_name}}</label>
                     </div>
                 @endforeach
 
@@ -139,6 +139,19 @@
                 @endif
 
             </div>
+
+            {{-- Google Recaptcha --}}
+            {{-- {!! RecaptchaV3::field('register') !!} --}}
+
+           {{--  @if ($errors->has('g-recaptcha-response'))
+
+                <span class="help-block">
+
+                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+
+                </span>
+
+            @endif --}}
 
 
             <!-- Submit button -->

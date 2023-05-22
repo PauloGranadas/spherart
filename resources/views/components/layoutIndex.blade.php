@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.css" rel="stylesheet" />
+    
 </head>
 
 <body>
@@ -45,20 +46,20 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Navbar brand -->
                     <a class="navbar-brand mt-2 mt-lg-0" href="/">
-                        <img src="images/spherartLogo_w.png" height="40" alt="Spherart Logo" loading="lazy" />
+                        <img src="/images/spherartLogo_w.png" height="40" alt="Spherart Logo" loading="lazy" />
                     </a>
                     <!-- Left links -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="projects">Projects</a>
+                            <a class="nav-link" href="/projects">Projects</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="collaborators">Collaborators</a>
+                            <a class="nav-link" href="/collaborators">Collaborators</a>
                         </li>
                         
                         <li class="nav-item">
-                            <a class="nav-link" href="about">About Us</a>
+                            <a class="nav-link" href="/about">About Us</a>
                         </li>
                     </ul>
                     <!-- Left links -->
@@ -97,7 +98,7 @@
                     @auth
                     <div class="dropdown" style="color: rgb(255, 255, 255);">
                         <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                           <span class="mb-2 mb-lg-0"> Welcome {{auth()->user()->nikname}}</span><i class="fa-solid fa-gear"></i>
+                           <span class="mb-2 mb-lg-0"> Welcome {{auth()->user()->nikname}}</span> <i class="fa-solid fa-gear"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                             <li>
@@ -109,7 +110,7 @@
                             <form method="POST" action="/logout">
                                 @csrf
                             <li>
-                                <a class="dropdown-item" href="logout">Logout</a>
+                                <a class="dropdown-item" href="/logout">Logout</a>
                             </li>
                         </form>
                         </ul>
@@ -121,10 +122,10 @@
                         </a>
 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                     <li class="nav-item">
-                        <a class="dropdown-item" href="register">Register</a>
+                        <a class="dropdown-item" href="/register">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="dropdown-item" href="login">Log In</a>
+                        <a class="dropdown-item" href="/login">Log In</a>
                     </li>
                 </ul>
                 @endauth

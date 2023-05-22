@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProjectController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,13 +27,13 @@ Route::get('/collaborators', [UserController::class, 'showCollaborators']);
 Route::get('/collaborators/{user}', [UserController::class, 'show']);
 
 //Show Register/Create User Form
-Route::get('/register', [UserController::class, 'create']);
+Route::get('/register', [UserController::class, 'create'])->name('login')->middleware('guest');
 //Create New User
 Route::post('/users', [UserController::class, 'store']);
 //Logout user
-Route::get('/logout', [UserController::class, 'logout'])/* ->middleware('auth') */;
+Route::get('/logout', [UserController::class, 'logout'])->middleware('auth');
 //Show Login Form
-Route::get('/login', [UserController::class, 'login'])/* ->name('login')->middleware('guest') */;
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 //Login
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
@@ -40,7 +41,16 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::get('/about', [UserController::class, 'aboutUs']);
 
 // Show Projects page
-Route::get('/projects', [ProjectController::class, 'index']);
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
 
 // Show Project Detail page
-Route::get('/projects/id/', [ProjectController::class, 'show']);
+Route::get('/projects/{project}', [ProjectController::class, 'show']);
+
+// Show Create Project Page Form
+//Route::get('/projects/register', [ProjectController::class, 'create']);
+
+//Create New Project
+Route::post('/project', [ProjectController::class, 'store'])->name('projects.store');
+
+// Show Create Project Page Form
+Route::get('/project/create', [ProjectController::class, 'create']);

@@ -24,15 +24,44 @@ class UserController extends Controller
     }
 
     function show(User $user)
-    {
-        return view('users.show', ['user' => $user]);
+    {   
+        return view('users.show', ['user' => $user,'projects'=> $user->projects]);
     }
+    //Logout User
+    public function logout(Request $request)
+    {
+        auth()->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/')->with('message', 'You have benn logged out');
+    }
+    //Login User
+    public function login()
+    {
+        return view('users.login');
+    }
+
+    //Authenticate User
+    public function authenticate(Request $request)
+    {
+        $formFields = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => 'required'
+            // | = or
+        ]);
+        if (auth()->attempt($formFields)) {
+            $request->session()->regenerate();
+            return redirect('/')->with('message', 'You are now logged in!!');
+        }
+        return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
+    }
+
     // Show Registration New User
     public function create()
     {
         //return view('users.register');
-        $checkboxCategories = Category::all();
-        return view('users.register')->with('checkboxCategories', $checkboxCategories);
+        $categories = Category::all();
+        return view('users.register')->with('categories', $categories);
     }
     //Create New User
     public function store(Request $request)
@@ -47,8 +76,9 @@ class UserController extends Controller
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => 'required|confirmed|min:6',
             'bio' => 'required|min:50',
+            /* 'g-recaptcha-response' => 'required|recaptchav3:register,0.5' */
         ]);
-        
+
 
 
         //store avatar image file
@@ -82,5 +112,14 @@ class UserController extends Controller
 
 
         return redirect('/')->with('message', 'User created successfully and logged in');
+    }
+    public function messages()
+    {
+        return [
+            'required' => 'The :attribute field is required.',
+            'email' => 'The :attribute must use a valid email address',
+            'g-recaptcha-response.recaptcha' => 'Captcha verification failed',
+            'g-recaptcha-response.required' => 'Please complete the captcha'
+        ];
     }
 }//end of class
