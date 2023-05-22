@@ -117,9 +117,11 @@ class UserController extends Controller
     //Show Edit Form
     public function edit(User $user)
     {
+       
+        $userCategories = $user->categories->pluck('id')->toArray();  
         $categories = Category::all();
-        /* return view('users.edit', ['user' => $user, 'categories' => $categories]); */
-        return view('users.edit', ['user' => $user, 'categories' => $categories]);
+        
+        return view('users.edit', ['user' => $user, 'categories' => $categories, 'userCategories'=>$userCategories]);
     }
     // update User information
     public function update(Request $request, User $user)
