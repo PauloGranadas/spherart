@@ -62,7 +62,9 @@ class UserController extends Controller
     {
         //return view('users.register');
         $categories = Category::all();
-        return view('users.register')->with('categories', $categories);
+        $countryController = new CountryController();
+        $countries = $countryController->getCountries();
+        return view('users.register', compact('countries'))->with('categories', $categories);
     }
     //Create New User
     public function store(Request $request)
@@ -118,12 +120,16 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $categories = Category::all();
+        $countryController = new CountryController();
+        $countries = $countryController->getCountries();
         /* return view('users.edit', ['user' => $user, 'categories' => $categories]); */
-        return view('users.edit', ['user' => $user, 'categories' => $categories]);
+        return view('users.edit', compact('countries'), ['user' => $user, 'categories' => $categories]);
     }
     // update User information
     public function update(Request $request, User $user)
     {
+
+
         // Validate the form data
         $validatedData = $request->validate([
             'firstname' => 'required',

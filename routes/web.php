@@ -66,3 +66,6 @@ Route::post('/project', [ProjectController::class, 'store'])->name('projects.sto
 
 // Show Create Project Page Form
 Route::get('/project/create', [ProjectController::class, 'create']);
+
+//Countries API
+Route::get('/countries', 'CountryController@index');
