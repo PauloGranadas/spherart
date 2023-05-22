@@ -139,9 +139,14 @@
               <span class="fw-normal mb-1">{{$collaborator->member_type}}</span>
             </td>
             <td>
-              <button type="button" class="btn btn-link btn-sm btn-rounded">
-                Delete
-              </button>
+              <form action="{{route('collaborator.delete', $collaborator) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-link btn-sm btn-rounded">
+                  Delete
+                </button>
+            </form>
+            
             </td>
           </tr>
         @endforeach

@@ -150,7 +150,31 @@
         {{$slot}}
 
     </main>
-
+    <div class="container">
+        @if(session('success'))
+        <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 9999;">
+            <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="3000">
+                <div class="toast-header">
+                    <strong class="me-auto">Success</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    {{ session('success') }}
+                </div>
+            </div>
+        </div>
+        @endif
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var toast = document.querySelector('.toast');
+    
+            setTimeout(function() {
+                toast.classList.remove('show');
+            }, 3000);
+        });
+    </script>
 
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.js">
