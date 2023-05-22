@@ -24,10 +24,8 @@ class UserController extends Controller
     }
 
     function show(User $user)
-    {   
-        // 'projects'=> $user->projects
-        //$user->projectsAsMember->projects
-        return view('users.show', ['user' => $user,'projects'=> $user->projects]);
+    {
+        return view('users.show', ['user' => $user, 'projects' => $user->projects]);
     }
     //Logout User
     public function logout(Request $request)
@@ -78,7 +76,7 @@ class UserController extends Controller
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => 'required|confirmed|min:6',
             'bio' => 'required|min:50',
-            /* 'g-recaptcha-response' => 'required|recaptchav3:register,0.5' */
+            /* 'g-recaptcha-response' => 'required|recaptcha', */
         ]);
 
 
@@ -90,8 +88,8 @@ class UserController extends Controller
         // hash the password using the bcrypt()
         $formFields['password'] = bcrypt($formFields['password']);
 
-        $validateCategory = $request->validate([
-            'checkboxes' => 'required|array|min:1',
+        $validateCategories = $request->validate([
+            'categories' => 'required|array|min:1',
         ]);
 
 
@@ -100,7 +98,7 @@ class UserController extends Controller
         $idUser = $user->id;
 
         //Store Checkboxes Categories        
-        $checkboxValues = $request->input('checkboxes');
+        $checkboxValues = $request->input('categories');
         foreach ($checkboxValues as $category) {
             $artistCategory = new ArtistCategory();
             $artistCategory->category_id = $category;
@@ -115,6 +113,13 @@ class UserController extends Controller
 
         return redirect('/')->with('message', 'User created successfully and logged in');
     }
+    //Show Edit Form
+    public function edit(User $user)
+    {
+        $categories = Category::all();
+        return view('users.edit', ['user' => $user, 'categories' => $categories]);
+    }
+
     public function messages()
     {
         return [

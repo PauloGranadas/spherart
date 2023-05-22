@@ -36,6 +36,8 @@ Route::get('/logout', [UserController::class, 'logout'])->middleware('auth');
 Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 //Login
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+//Show Edit User
+Route::get('/users/{user}/edit', [UserController::class, 'edit'])->middleware('auth');
 
 //Show About Us Page
 Route::get('/about', [UserController::class, 'aboutUs']);

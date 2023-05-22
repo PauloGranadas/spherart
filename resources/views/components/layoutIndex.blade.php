@@ -12,6 +12,9 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.css" rel="stylesheet" />
+    {{-- Google Recaptcha --}}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
     
 </head>
 
@@ -102,7 +105,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                             <li>
-                                <a class="dropdown-item" href="#">My profile</a>
+                                <a class="dropdown-item" href="users/{{auth()->user()->id}}/edit">My profile</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="#">Settings</a>
