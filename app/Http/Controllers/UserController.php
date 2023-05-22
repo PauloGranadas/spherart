@@ -76,8 +76,7 @@ class UserController extends Controller
             'locality' => 'required',
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => 'required|confirmed|min:6',
-            'bio' => 'required|min:50',
-            /* 'g-recaptcha-response' => 'required|recaptcha', */
+            'bio' => 'required|min:50'            
         ]);
 
 
@@ -109,11 +108,12 @@ class UserController extends Controller
 
         //Login
         // using the auth() helper
-        auth()->login($user);
+        //auth()->login($user);
 
 
-        return redirect('/')->with('message', 'User created successfully and logged in');
+        return redirect()->route('login')->with('message', 'User created successfully and logged in');
     }
+    
     //Show Edit Form
     public function edit(User $user)
     {

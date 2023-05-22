@@ -11,7 +11,7 @@
         </header>
     </div>
     <div class="container">
-        <form method="POST" action="{{route('users.store')}}" enctype="multipart/form-data">
+        <form method="POST" action="/useradd" enctype="multipart/form-data">
             @csrf
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-4">
@@ -123,7 +123,7 @@
 
             <!-- Checkbox -->           
 
-            @include('partials._categories');       
+            @include('partials._categories')      
 
             
 
