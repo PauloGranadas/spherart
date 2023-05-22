@@ -121,24 +121,11 @@
                 @enderror
             </div>
 
-            <!-- Checkbox -->
-            <h3>Choose your arts category/categories:</h3>
+            
+            
 
-
-            <!-- Checked checkbox -->
-            <div class="row">            
-                @foreach($categories as $category)
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="{{$category->id }}" name="checkboxes[]" value="{{$category->id}}">
-                        <label class="form-check-label" for="{{$category->id}}">{{$category->area_name}}</label>
-                    </div>
-                @endforeach
-
-                @if($errors->has('checkboxes'))
-                <p class="text-danger">{{ $errors->first('checkboxes') }}</p>
-                @endif
-
-            </div>
+            {{-- Categories --}}
+            @include('partials._categories')
 
             {{-- Google Recaptcha --}}
             {{-- @captcha --}}

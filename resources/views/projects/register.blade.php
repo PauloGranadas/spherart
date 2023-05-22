@@ -45,8 +45,8 @@
                 <p class="text-danger">{{$message}}</p>
                 @enderror
             </div>             
-
-            <!-- list of categories -->
+            @include('partials._categories')
+            {{-- <!-- list of categories -->
             <label for="options" class="form-label">What you go need for your project</label>
             <div class="checkbox-group border border-secondary rounded p-4 mb-4">
                 @foreach($categories as $category)
@@ -58,7 +58,7 @@
             </div>
             @if($errors->has('categories'))
                 <p class="text-danger">{{ $errors->first('categories') }}</p>
-            @endif
+            @endif --}}
 
 
 
@@ -70,7 +70,7 @@
     </div>
 
 
-    <script>
+    {{-- <script>
     document.addEventListener('DOMContentLoaded', function() {
       const checkboxGroup = document.querySelector('.checkbox-group');
       const labels = checkboxGroup.querySelectorAll('label');
@@ -90,6 +90,6 @@
         
       });
     });
-  </script>
+  </script> --}}
 
 </x-layoutIndex>
