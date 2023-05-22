@@ -7,8 +7,8 @@
             <div>
                 <form action="{{ route('projects.index') }}" method="GET">
                     <select class="form-select" name="filter" onchange="this.form.submit()">
-                        <option value="user" {{ request('filter') === 'user' || !request('filter') ? ' selected' : '' }} class="bg-primary">My Projects</option>
-                        <option value="all" {{ request('filter') === 'all' ? ' selected' : '' }} class="bg-secondary">All Projects</option>
+                        <option value="user" {{ request('filter') === 'user' || !request('filter') ? ' selected' : '' }}>My Projects</option>
+                        <option value="all" {{ request('filter') === 'all' ? ' selected' : '' }}>All Projects</option>
                     </select>
                 </form>
             </div>
@@ -45,7 +45,7 @@
                         
                         @if (auth()->check() && $project->creator_id === auth()->user()->id)
                             <div class="d-flex justify-content-end">
-                                <a href="" class="btn btn-outline-secondary btn-rounded" data-mdb-ripple-color="dark">Add collaborator</a>
+                                <a href="/projects/{{$project->id}}/add" class="btn btn-outline-secondary btn-rounded" data-mdb-ripple-color="dark">Add collaborator</a>
                                 <a href=""  class="btn btn-outline-danger btn-rounded mx-2" data-mdb-ripple-color="dark"><i class="fas fa-trash"></i></a>
                                 <a href=""  class="btn btn-outline-success btn-rounded" data-mdb-ripple-color="dark"><i class="fas fa-gear"></i></a>
                             </div>
