@@ -25,6 +25,8 @@ class UserController extends Controller
 
     function show(User $user)
     {   
+        // 'projects'=> $user->projects
+        //$user->projectsAsMember->projects
         return view('users.show', ['user' => $user,'projects'=> $user->projects]);
     }
     //Logout User
