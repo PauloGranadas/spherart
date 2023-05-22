@@ -8,4 +8,5 @@ use Illuminate\Http\Request;
 class Category extends Controller
 {
     //
+    
 }

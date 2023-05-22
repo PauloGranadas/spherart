@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ArtistCategory;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\ArtistCategory;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
 
 
 class UserController extends Controller
@@ -117,7 +118,60 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $categories = Category::all();
+        /* return view('users.edit', ['user' => $user, 'categories' => $categories]); */
         return view('users.edit', ['user' => $user, 'categories' => $categories]);
+    }
+    // update User information
+    public function update(Request $request, User $user)
+    {
+        // Validate the form data
+        $validatedData = $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users')->ignore($user->id),
+            ],
+
+            'nikname' => [
+                'required',
+                Rule::unique('users')->ignore($user->id),
+            ],
+            // Other validation rules...
+            'bio' => 'required|min:50',
+            'country' => ['required', 'min:3'],
+            'locality' => 'required',
+        ]);
+
+
+
+        // Update user attributes
+        $user->firstname = $validatedData['firstname'];
+        $user->lastname = $validatedData['lastname'];
+
+        if ($request->input('email') !== $user->email) {
+            $user->email = $validatedData['email'];
+        }
+        if ($request->input('nikname') !== $user->nikname) {
+            // Nikname has changed, perform additional checks or actions if needed
+            $user->nikname = $validatedData['nikname'];
+        }
+        $user->bio = $validatedData['bio'];
+        $user->locality = $validatedData['locality'];
+        $user->country = $validatedData['country'];
+        // Update other user attributes...
+
+        // Check if a new password is provided
+        if ($request->filled('password')) {
+            // Hash the new password
+            $user->password = Hash::make($request->input('password'));
+        }
+
+        // Save the updated user in the database
+        $user->save();
+
+        // Redirect or perform any other necessary actions
     }
 
     public function messages()

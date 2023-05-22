@@ -25,7 +25,7 @@ Route::get('/collaborators', [UserController::class, 'showCollaborators']);
 
 // page detail collaborators
 Route::get('/collaborators/{user}', [UserController::class, 'show']);
-
+/* -----------USER SECCTION----------- */
 //Show Register/Create User Form
 Route::get('/register', [UserController::class, 'create'])->name('login')->middleware('guest');
 //Create New User
@@ -38,6 +38,10 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 //Show Edit User
 Route::get('/users/{user}/edit', [UserController::class, 'edit'])->middleware('auth');
+//Update User
+Route::post('/users', [UserController::class, 'update']);
+
+
 
 //Show About Us Page
 Route::get('/about', [UserController::class, 'aboutUs']);
