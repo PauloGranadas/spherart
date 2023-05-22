@@ -105,7 +105,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                             <li>
-                                <a class="dropdown-item" href="users/{{auth()->user()->id}}/edit">My profile</a>
+                                <a class="dropdown-item" href="{{route('user.edit', auth()->user()->id)}}">My profile</a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="#">Settings</a>

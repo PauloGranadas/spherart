@@ -37,9 +37,9 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 //Login
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 //Show Edit User
-Route::get('/users/{user}/edit', [UserController::class, 'edit'])->middleware('auth');
+Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit')->middleware('auth');
 //Update User
-Route::post('/users', [UserController::class, 'update']);
+Route::put('/users/{user}', [UserController::class, 'update'])->name('user.update');
 
 
 

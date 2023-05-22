@@ -144,8 +144,9 @@ class UserController extends Controller
             'bio' => 'required|min:50',
             'country' => ['required', 'min:3'],
             'locality' => 'required',
+            'categories' => 'required|array',
+            'categories.*' => 'exists:categories,id',
         ]);
-
 
 
         // Update user attributes
@@ -170,10 +171,13 @@ class UserController extends Controller
             $user->password = Hash::make($request->input('password'));
         }
 
+        $user->categories()->sync($request->input('categories'));
+
         // Save the updated user in the database
         $user->save();
 
         // Redirect or perform any other necessary actions
+        return redirect()->route('user.edit', $user)->with('message', 'User updated successfully.');
     }
 
     public function messages()

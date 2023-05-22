@@ -11,8 +11,10 @@
         </header>
     </div>
     <div class="container">
-        <form method="POST" action="/users" enctype="multipart/form-data">
+        <form method="POST" action="{{route('user.update', $user)}}" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
+
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-4">
                 <div class="col">
