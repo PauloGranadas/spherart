@@ -105,7 +105,7 @@
                 </div>
             </div>
             {{-- Importe File Feature  --}}
-            <div class="mb-4">
+            <div class="mb-4 d-inline-flex flex-column-reverse align-items-start">
                 <label for="avatar" class="inline-block text-lg mb-2">
                     Image Profile
                 </label>
@@ -114,7 +114,7 @@
                 @error('avatar')
                  <p class="text-danger">{{$message}}</p>
                 @enderror
-                <img class="w-48 mr-6 mb-6"
+                <img class="w-48 mr-6 mb-6" style="height:150px;"
                 src="{{$user->avatar ? asset('storage/' . $user->avatar) : asset('/images/no-image.png')}}"
                 alt=""
                 >
