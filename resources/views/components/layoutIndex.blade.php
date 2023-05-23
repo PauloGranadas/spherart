@@ -64,6 +64,10 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/about">About Us</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact">Contact Us</a>
+                        </li>
                     </ul>
                     <!-- Left links -->
                 </div>
@@ -150,18 +154,6 @@
         {{$slot}}
 
     </main>
-<<<<<<< HEAD
-    <div class="container">
-        @if(session('success'))
-        <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 9999;">
-            <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="3000">
-                <div class="toast-header">
-                    <strong class="me-auto">Success</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                    {{ session('success') }}
-=======
 
     <div class="container">
         @if(session('message'))
@@ -173,12 +165,20 @@
                 </div>
                 <div class="toast-body">
                     {{ session('message') }}
->>>>>>> main
                 </div>
             </div>
         </div>
         @endif
     </div>
+
+    <footer class="bg-light text-center text-lg-start">
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          © 2023 Copyright:
+          <a class="text-dark" href="https://spherart.com/">Spherart</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {

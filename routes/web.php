@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ContactFormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +43,10 @@ Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.ed
 //Update User
 Route::put('/users/{user}', [UserController::class, 'update'])->name('user.update');
 
-
+//contact us
+Route::get('/contact', [ContactController::class, 'contactUs'])->name('contactUs');
+//contact form
+Route::post('/contactForm', [ContactController::class, 'sendContactForm'])->name('sendContactForm');
 
 //Show About Us Page
 Route::get('/about', [UserController::class, 'aboutUs']);
