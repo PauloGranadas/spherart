@@ -51,7 +51,7 @@
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-outline-danger btn-rounded mx-2" data-mdb-ripple-color="dark"><i class="fas fa-trash"></i></button> 
                                 </form> 
-                                <a href=""  class="btn btn-outline-success btn-rounded" data-mdb-ripple-color="dark"><i class="fas fa-gear"></i></a>
+                                <a href="{{route('projects.edit', $project) }}"  class="btn btn-outline-success btn-rounded" data-mdb-ripple-color="dark"><i class="fas fa-gear"></i></a>
                             </div>
                         @endif
                     </div>
