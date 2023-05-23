@@ -177,7 +177,7 @@
 
 
             <!-- Submit button -->
-            <button type="submit" class="btn btn-primary">Sign up</button>
+            <button type="submit" class="btn btn-primary mb-6">Update</button>
 
 
         </form>

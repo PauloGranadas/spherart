@@ -148,7 +148,7 @@ class UserController extends Controller
             'locality' => 'required',
             'categories' => 'required|array',
             'categories.*' => 'exists:categories,id',
-            'password' => ['required', 'confirmed', 'min:6', "regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/"],
+            /*   'password' => ['required', 'confirmed', 'min:6', "regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/"], */
         ]);
 
 
