@@ -1,14 +1,6 @@
 <x-layoutIndex>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Include the MDB Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdb@5.2.1/dist/css/mdb.min.css" integrity="sha384-pFHoPRyn9ur0c89LqgsrCCk0IE0Ck0HBhNc1NoRZDL6vksb0tACPePe7j8sxM0aW" crossorigin="anonymous">
-  <title>Nicely Styled Text with MDB Bootstrap</title>
-  <style>
+<style>
 
     
 
@@ -45,9 +37,7 @@
   </style>
 
 
-</head>
-<body>
-<h1 class="text-center mb-4" style="font-size: 50px;">Spherart</h1>
+<h1 class="text-center my-4" style="font-size: 50px;">Spherart</h1>
 <div class="title" style="font-size: 50px;">
 
 
@@ -87,13 +77,7 @@
       </div>
     </div>
   </div>
-  <!-- Include the MDB Bootstrap JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/mdb@5.2.1/dist/js/mdb.min.js" integrity="sha384-i60OmT4N9gZIlp0WyF7gO2BS0Yl/P0oULhU7uvC2o8XqoXf8oZZyfEz4ktv+qPDp" crossorigin="anonymous"></script>
-</body>
-</html>
-
     
 
-    
 
 </x-layoutIndex>
