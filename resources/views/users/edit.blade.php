@@ -86,10 +86,11 @@
             <!-- Password input -->
             <div class="row mb-4">
                 <div class="col">
-                    <div class="form-outline mb-4">
+                    <div class="form-outline">
                         <input type="password" id="form3Example6" class="form-control" name="password" value="" />
                         <label class="form-label" for="form3Example6">Password</label>
                     </div>
+                    <small class="text-primary">Password must be at least 6 characters long, containing at least 1 upper case, numeric, and special character</small>
                     @error('password')
                     <p class="text-danger">{{$message}}</p>
                     @enderror
