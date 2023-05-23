@@ -7,9 +7,9 @@
         <!--Search Collaborators-->
         <div class="row my-4">
             <div class="col-5">           
-                <form action="" method="get" class="input-group">                    
+                <form action="{{ route('search.collaborators', $project ) }}" method="GET" class="input-group">                    
                         <div class="form-outline">
-                            <input type="search" id="form1" class="form-control" />
+                            <input type="text" name="search" id="form1" class="form-control" />
                             <label class="form-label" for="form1">Search per nikname</label>
                         </div>
                         <button type="button" class="btn btn-primary">

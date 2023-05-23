@@ -43,6 +43,8 @@ class ProjectController extends Controller
         return view('projects.show', ['project' => $project]);
     }
 
+
+
     public function create()
     {
         $categories = Category::all();
@@ -56,7 +58,6 @@ class ProjectController extends Controller
             'name' => ['required', 'min:5'],
             'description' => 'required|min:50',
         ]);
-
         //store cover image file
         if ($request->hasFile('cover')) {
             $imagePath = $request->file('cover')->store('projects', 'public');
@@ -71,7 +72,9 @@ class ProjectController extends Controller
         $project = new Project;
         $project->name = $request->name;
         $project->description = $request->description;
-        $project->cover = $imagePath;
+        if ($request->hasFile('cover')) {
+            $project->cover = $imagePath;
+        }
         $project->creator_id = Auth::id();
         $project->status = 'upcoming';
         $project->save();
@@ -134,19 +137,67 @@ class ProjectController extends Controller
 
     //delete collaborator when click on the delete button inside the page of a project
 
-    public function delete(ProjectMember $collaborator){
+    public function delete(ProjectMember $collaborator)
+    {
         $collaborator->delete();
 
-        return redirect()->route("project.show", $collaborator->project_id)->with('message',"Collaborator deleted successfully");
-       // return response()->json(['message'=>'Collaborator deleted successfully']);
+        return redirect()->route("project.show", $collaborator->project_id)->with('message', "Collaborator deleted successfully");
+        // return response()->json(['message'=>'Collaborator deleted successfully']);
     }
 
-     //delete project when clicked on the delete button inside the page of a collaborator
+    //delete project when clicked on the delete button inside the page of a collaborator
 
-     public function deleteProject(Project $project){
+    public function deleteProject(Project $project)
+    {
         $project->delete();
 
-        return redirect()->route("projects.index", $project)->with('message',"Project deleted successfully");
+        return redirect()->route("projects.index", $project)->with('message', "Project deleted successfully");
     }
 
+    //Show Edit Form
+
+    public function edit(Project $project)
+    {
+        $categories = Category::all();
+        $projectCategories = $project->categories->pluck('id')->toArray();
+        return view('projects.edit', ['project' => $project, 'categories' => $categories, 'projectCategories' => $projectCategories]);
+    }
+
+    public function update(Request $request, Project $project)
+    {
+        $formFields = $request->validate([
+            'name' => ['required', 'min:5'],
+            'description' => 'required|min:50',
+        ]);
+
+        if ($request->hasFile('cover')) {
+            $imagePath = $request->file('cover')->store('projects', 'public');
+        }
+
+        $validateCategories = $request->validate([
+            'categories' => 'required|array|min:1',
+        ]);
+
+        $project->name = $request->name;
+        $project->description = $request->description;
+
+        if ($request->hasFile('cover')) {
+            $project->cover = $imagePath;
+        }
+
+        $project->save();
+
+        $project->categories()->detach();
+
+        $categories = $request->input('categories');
+
+        foreach ($categories as $category) {
+            $projectCategory = new ProjectCategory();
+            $projectCategory->category_id = $category;
+            $projectCategory->project_id = $project->id;
+            $projectCategory->save();
+        }
+
+        return redirect('/projects')->with('message', 'Project updated successfully');
+    }
 }
