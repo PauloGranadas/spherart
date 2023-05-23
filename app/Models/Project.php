@@ -36,7 +36,7 @@ class Project extends Model
         //return request()->query('search');
         //$query->when($filters['search'] ?? false, function($query, $search){
             if ($filters['search'] ?? false) {
-                ''
+                $query->where('nikname', 'like', '%'. request('search') . '%');
             }
 
        
