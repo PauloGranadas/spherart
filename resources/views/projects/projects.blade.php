@@ -21,7 +21,7 @@
                 <div class="col">
                     <div class="card">
                     <a href="/projects/{{$project->id}}">
-                        <img src="{{$project->cover ? asset('storage/' . $project->cover) : asset('images/no-image.png')}}" class="card-img-top" alt="Hollywood Sign on The Hill"/>
+                        <img src="{{$project->cover ? asset('storage/' . $project->cover) : asset('images/cover-no-image.png')}}" class="card-img-top" alt="Hollywood Sign on The Hill"/>
                     </a>
                     <div class="card-body">
                         <h5 class="card-title">{{$project->name}}</h5>
@@ -46,7 +46,11 @@
                         @if (auth()->check() && $project->creator_id === auth()->user()->id)
                             <div class="d-flex justify-content-end">
                                 <a href="/projects/{{$project->id}}/add" class="btn btn-outline-secondary btn-rounded" data-mdb-ripple-color="dark">Add collaborator</a>
-                                <a href=""  class="btn btn-outline-danger btn-rounded mx-2" data-mdb-ripple-color="dark"><i class="fas fa-trash"></i></a>
+                                <form action="{{route('project.delete', $project) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-outline-danger btn-rounded mx-2" data-mdb-ripple-color="dark"><i class="fas fa-trash"></i></button> 
+                                </form> 
                                 <a href=""  class="btn btn-outline-success btn-rounded" data-mdb-ripple-color="dark"><i class="fas fa-gear"></i></a>
                             </div>
                         @endif

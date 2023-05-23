@@ -34,7 +34,7 @@ class UserController extends Controller
         auth()->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/')->with('message', 'You have benn logged out');
+        return redirect('/');
     }
     //Login User
     public function login()
@@ -52,7 +52,7 @@ class UserController extends Controller
         ]);
         if (auth()->attempt($formFields)) {
             $request->session()->regenerate();
-            return redirect('/')->with('message', 'You are now logged in!!');
+            return redirect('/projects');
         }
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
     }
@@ -62,9 +62,7 @@ class UserController extends Controller
     {
         //return view('users.register');
         $categories = Category::all();
-        $countryController = new CountryController();
-        $countries = $countryController->getCountries();
-        return view('users.register', compact('countries'))->with('categories', $categories);
+        return view('users.register')->with('categories', $categories);
     }
     //Create New User
     public function store(Request $request)
@@ -77,9 +75,8 @@ class UserController extends Controller
             'country' => ['required', 'min:3'],
             'locality' => 'required',
             'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'password' => 'required|confirmed|min:6',
-            'bio' => 'required|min:50',
-            /* 'g-recaptcha-response' => 'required|recaptcha', */
+            'password' => ['required', 'confirmed', 'min:6', "regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/"],
+            'bio' => 'required|min:50'
         ]);
 
 
@@ -111,25 +108,24 @@ class UserController extends Controller
 
         //Login
         // using the auth() helper
-        auth()->login($user);
+        //auth()->login($user);
 
 
-        return redirect('/')->with('message', 'User created successfully and logged in');
+        return redirect()->route('login')->with('message', 'User created successfully and logged in');
     }
+
     //Show Edit Form
     public function edit(User $user)
     {
+
+        $userCategories = $user->categories->pluck('id')->toArray();
         $categories = Category::all();
-        $countryController = new CountryController();
-        $countries = $countryController->getCountries();
-        /* return view('users.edit', ['user' => $user, 'categories' => $categories]); */
-        return view('users.edit', compact('countries'), ['user' => $user, 'categories' => $categories]);
+
+        return view('users.edit', ['user' => $user, 'categories' => $categories, 'userCategories' => $userCategories]);
     }
     // update User information
     public function update(Request $request, User $user)
     {
-
-
         // Validate the form data
         $validatedData = $request->validate([
             'firstname' => 'required',
@@ -138,6 +134,8 @@ class UserController extends Controller
                 'required',
                 'email',
                 Rule::unique('users')->ignore($user->id),
+                'email:rfc,dns',
+
             ],
 
             'nikname' => [
@@ -148,8 +146,10 @@ class UserController extends Controller
             'bio' => 'required|min:50',
             'country' => ['required', 'min:3'],
             'locality' => 'required',
+            'categories' => 'required|array',
+            'categories.*' => 'exists:categories,id',
+            /*   'password' => ['required', 'confirmed', 'min:6', "regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/"], */
         ]);
-
 
 
         // Update user attributes
@@ -163,10 +163,16 @@ class UserController extends Controller
             // Nikname has changed, perform additional checks or actions if needed
             $user->nikname = $validatedData['nikname'];
         }
+        if ($request->hasFile('avatar')) {
+            $imagePath = $request->file('avatar')->store('avatars', 'public');
+        }
         $user->bio = $validatedData['bio'];
         $user->locality = $validatedData['locality'];
         $user->country = $validatedData['country'];
         // Update other user attributes...
+        if ($request->hasFile('avatar')) {
+            $user->avatar = $imagePath;
+        }
 
         // Check if a new password is provided
         if ($request->filled('password')) {
@@ -174,10 +180,13 @@ class UserController extends Controller
             $user->password = Hash::make($request->input('password'));
         }
 
+        $user->categories()->sync($request->input('categories'));
+
         // Save the updated user in the database
         $user->save();
 
         // Redirect or perform any other necessary actions
+        return redirect()->route('user.edit', $user)->with('message', 'User updated successfully.');
     }
 
     public function messages()

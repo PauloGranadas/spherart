@@ -58,7 +58,7 @@ class ProjectController extends Controller
             'name' => ['required', 'min:5'],
             'description' => 'required|min:50',
         ]);
-
+        /* $imagePath = 'images/cover-no-image.png'; */
         //store cover image file
         if ($request->hasFile('cover')) {
             $imagePath = $request->file('cover')->store('projects', 'public');
@@ -73,7 +73,10 @@ class ProjectController extends Controller
         $project = new Project;
         $project->name = $request->name;
         $project->description = $request->description;
-        $project->cover = $imagePath;
+        /* $project->cover = $imagePath; */
+        if ($request->hasFile('cover')) {
+            $project->cover = $imagePath;
+        }
         $project->creator_id = Auth::id();
         $project->status = 'upcoming';
         $project->save();
@@ -135,3 +138,4 @@ class ProjectController extends Controller
     
     }
 }
+
