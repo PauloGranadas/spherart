@@ -80,5 +80,7 @@ Route::delete('/projects/Collaborators/delete/{collaborator}', [ProjectControlle
 Route::delete('/projects/delete/{project}', [ProjectController::class, 'deleteProject'])->name('project.delete');
 
 // search collaborator for the project
-Route::get('/search/{}', [ProjectController::class, 'searchCollaborator'])->name('search.collaborators');
+Route::get('/', [ProjectController::class, 'createCollaborator'])->name('collaborators.search');
+
+
 

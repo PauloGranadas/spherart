@@ -101,7 +101,7 @@
                     @auth
                     <div class="dropdown" style="color: rgb(255, 255, 255);">
                         <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                           <!--<span class="mb-2 mb-lg-0"> Welcome {{auth()->user()->nikname}}</span> -->
+                            <span class="mb-2 mb-lg-0">{{auth()->user()->nikname}} </span>
                            <img
                                     src="{{auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : asset('images/no-image.png')}}"
                                     class="rounded-circle"

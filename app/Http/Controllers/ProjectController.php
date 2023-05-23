@@ -103,14 +103,21 @@ class ProjectController extends Controller
         return redirect('/projects')->with('message', 'Project created successfully and logged in');
     }
 
-    function createCollaborator(Project $project)
+    function createCollaborator(Project $project, Request $request)
     {
         // take all collaborator alredy associed to the project in one array
         $collaboratorsOfProject = $project->members->pluck('user_id')->toArray();
         //$collaborators = User::whereNotIN('id', $collaboratorsOfProject)->get();
-
-        $collaborators = User::whereNotIN('id', $collaboratorsOfProject)->latest()
-                                        ->filter(request(['search']))->get();
+        $searchTerm = $request->input('search');
+        $collaborators = User::whereNotIN('id', $collaboratorsOfProject)
+                                            ->when($searchTerm, function ($query) use ($searchTerm) {
+                                                return $query->search($searchTerm);
+                                            })
+                                            ->latest()
+                                            ->get();
+        
+                                        /*->latest()
+                                        ->filter(request(['search']))->get();*/
         
 
         return view('projects.add', ['project' => $project, 'collaborators' => $collaborators]);
