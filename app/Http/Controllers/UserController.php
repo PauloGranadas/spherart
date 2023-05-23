@@ -10,6 +10,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 
 
+
 class UserController extends Controller
 {
     //Display colaborators
@@ -62,6 +63,8 @@ class UserController extends Controller
     {
         //return view('users.register');
         $categories = Category::all();
+
+
         return view('users.register')->with('categories', $categories);
     }
     //Create New User
