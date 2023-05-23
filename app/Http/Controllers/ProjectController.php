@@ -129,7 +129,7 @@ class ProjectController extends Controller
         $projectMember->status = 'pending';
         $projectMember->save();
 
-        return redirect()->route('project.show', $project);
+        return redirect()->route('project.show', $project)->with('message', 'Collaboration request demand sends successfully!');
     }
 
     //delete collaborator when click on the delete button inside the page of a project
