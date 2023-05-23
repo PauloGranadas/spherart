@@ -149,4 +149,13 @@ class ProjectController extends Controller
         return redirect()->route("projects.index", $project)->with('message',"Project deleted successfully");
     }
 
+    function searchCollaborator(Request $request)
+    {
+        $keyword = $request->input('keyword');
+   
+        $results = User::where('nikname', 'like', "%$keyword%")
+                        ->get();
+                return view('search.results', compact('results', 'keyword'));
+        }
+
 }
