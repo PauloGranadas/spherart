@@ -70,7 +70,7 @@ Route::get('/project/create', [ProjectController::class, 'create']);
 //Show Edit Project
 /* Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('project.edit')->middleware('auth'); */
 Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
-//Update User
+//Update Project
 Route::put('/projects/{project}', [ProjectController::class, 'update'])->name('projects.update');
 
 //to delete collaborator from the project

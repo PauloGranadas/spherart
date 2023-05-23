@@ -187,17 +187,13 @@ class ProjectController extends Controller
 
         $project->save();
 
-        $project->categories()->detach();
+        //$project->categories()->detach();
+        $project->categories()->sync($request->input('categories'));
 
-        $categories = $request->input('categories');
+        //$categories = $request->input('categories');
 
-        foreach ($categories as $category) {
-            $projectCategory = new ProjectCategory();
-            $projectCategory->category_id = $category;
-            $projectCategory->project_id = $project->id;
-            $projectCategory->save();
-        }
+       
 
-        return redirect('/projects')->with('message', 'Project updated successfully');
+        return redirect()->route('projects.index')->with('message', 'Project updated successfully');
     }
 }
