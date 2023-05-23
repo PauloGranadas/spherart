@@ -170,8 +170,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
+
         //Recapcha Google
-       // Biscolab\ReCaptcha\ReCaptchaServiceProvider::class,
+        // Biscolab\ReCaptcha\ReCaptchaServiceProvider::class,
 
     ])->toArray(),
 

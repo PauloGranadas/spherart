@@ -3,9 +3,12 @@
     <div class="container">
 
       @auth
+      @if (auth()->check() && $project->creator_id === auth()->user()->id)
+
         <div class="text-right">
           <a href="/projects/{{$project->id}}/add" class="btn btn-warning btn-rounded my-2 fs-6"><i class="fas fa-people-arrows"></i> add Collaborator</a>
         </div>
+      @endif
       @endauth
       <div class="position-relative">
         <!--Images to showcase the project-->
@@ -74,13 +77,18 @@
               <span class="fw-normal mb-1">{{$collaborator->member_type}}</span>
             </td>
             <td>
+              @auth
               <form action="{{route('collaborator.delete', $collaborator) }}" method="POST">
                   @csrf
-                  @method('DELETE')
+
+                      
+                  @if (auth()->check() && $project->creator_id === auth()->user()->id)
                   <button type="submit" class="btn btn-link btn-sm btn-rounded">
                     Delete
                   </button>
+                  @endif
               </form>
+              @endauth
             </td>
           </tr>
         @endforeach
