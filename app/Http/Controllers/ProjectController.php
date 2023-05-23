@@ -131,4 +131,22 @@ class ProjectController extends Controller
 
         return redirect()->route('project.show', $project);
     }
+
+    //delete collaborator when click on the delete button inside the page of a project
+
+    public function delete(ProjectMember $collaborator){
+        $collaborator->delete();
+
+        return redirect()->route("project.show", $collaborator->project_id)->with('success',"Collaborator deleted successfully");
+       // return response()->json(['message'=>'Collaborator deleted successfully']);
+    }
+
+     //delete project when clicked on the delete button inside the page of a collaborator
+
+     public function deleteProject(Project $project){
+        $project->delete();
+
+        return redirect()->route("projects.index", $project)->with('success',"Project deleted successfully");
+    }
+
 }

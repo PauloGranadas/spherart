@@ -66,3 +66,9 @@ Route::post('/project', [ProjectController::class, 'store'])->name('projects.sto
 
 // Show Create Project Page Form
 Route::get('/project/create', [ProjectController::class, 'create']);
+
+//to delete collaborator from the project
+Route::delete('/projects/Collaborators/delete/{collaborator}', [ProjectController::class, 'delete'])->name('collaborator.delete');
+
+//to delete project from the projects of the user's page
+Route::delete('/projects/delete/{project}', [ProjectController::class, 'deleteProject'])->name('project.delete');
