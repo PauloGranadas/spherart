@@ -105,10 +105,10 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                             <li>
-                                <a class="dropdown-item" href="users/{{auth()->user()->id}}/edit">My profile</a>
+                                <a class="dropdown-item" href="/users/{{auth()->user()->id}}/edit">My profile</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">Settings</a>
+                                <a class="dropdown-item" href="/projects">My Projects</a>
                             </li>
                             <form method="POST" action="/logout">
                                 @csrf

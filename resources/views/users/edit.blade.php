@@ -38,7 +38,7 @@
             <div class="row mb-4">
                 <div class="col">
                     <div class="form-outline">
-                        <input type="text" id="form3Example3" class="form-control" name="nikname" value="{{$user->nickname}}" />
+                        <input type="text" id="form3Example3" class="form-control" name="nikname" value="{{$user->nikname}}" />
                         <label class="form-label" for="form3Example3">Nickname</label>
                         @error('nikname')
                         <p class="text-danger">{{$message}}</p>
@@ -47,12 +47,14 @@
                 </div>
 
                 <div class="col">
-                    <div class="form-outline">
-                        <input type="text" id="form3Example4" class="form-control" name="country" value="{{$user->country}}" />
-                        <label class="form-label" for="form3Example4">Country</label>
-                        @error('country')
-                        <p class="text-danger">{{$message}}</p>
-                        @enderror
+                    <div class="form-select">
+                        <label for="country">Country</label>
+                        <select name="country" id="country" class="form-control">
+                            <option value="{{$user->country}}">Select a country</option>
+                            @foreach ($countries as $country)
+                                <option value="{{ $country['name'] }}">{{ $country['name'] }}</option>
+                             @endforeach
+                        </select>
                     </div>
                 </div>
             </div>
@@ -85,7 +87,7 @@
             <div class="row mb-4">
                 <div class="col">
                     <div class="form-outline mb-4">
-                        <input type="password" id="form3Example6" class="form-control" name="password" value="{{$user->password}}" />
+                        <input type="password" id="form3Example6" class="form-control" name="password" value="" />
                         <label class="form-label" for="form3Example6">Password</label>
                     </div>
                     @error('password')
@@ -112,6 +114,10 @@
                 @error('avatar')
                  <p class="text-danger">{{$message}}</p>
                 @enderror
+                <img class="w-48 mr-6 mb-6"
+                src="{{$user->avatar ? asset('storage/' . $user->avatar) : asset('/images/no-image.png')}}"
+                alt=""
+                >
             </div>
             <div class="form-outline">
                 <textarea class="form-control" id="textAreaExample" rows="4" name="bio">{{$user->bio}}</textarea>

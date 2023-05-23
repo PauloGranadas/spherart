@@ -15,22 +15,22 @@ class ProjectController extends Controller
     function index(Request $request)
     {
         // if the user is authenticated the value par default is user, if is not is all
-        $defautValue = 'all'; 
-        if (Auth::check()) 
-            $defautValue = 'user'; 
-        
+        $defautValue = 'all';
+        if (Auth::check())
+            $defautValue = 'user';
+
 
         // take the value of the input selection filter. 
         //But in case of not request assume for default 
         $filter = $request->input('filter', $defautValue);
         $creator_id = Auth::id();
 
-        if ($filter==='all') {
+        if ($filter === 'all') {
             $projects = Project::with('user')->get();
-        }elseif ($filter==='user') {
+        } elseif ($filter === 'user') {
             // filter by the user id in where condition
             $projects = Project::with('user')->where('creator_id', $creator_id)->get();
-        }else{
+        } else {
             $projects = Project::with('user')->get();
         }
 
@@ -38,20 +38,22 @@ class ProjectController extends Controller
     }
 
 
-    function show(Project $project){        
-        return view('projects.show', ['project'=>$project]);
+    function show(Project $project)
+    {
+        return view('projects.show', ['project' => $project]);
     }
 
     public function create()
-    {   
-        $categories = Category::all();     
-        return view('projects.register')->with('categories',$categories);
+    {
+        $categories = Category::all();
+        return view('projects.register')->with('categories', $categories);
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $formFields = $request->validate([
-            'name' => ['required', 'min:5'],            
+            'name' => ['required', 'min:5'],
             'description' => 'required|min:50',
         ]);
 
@@ -59,8 +61,8 @@ class ProjectController extends Controller
         if ($request->hasFile('cover')) {
             $imagePath = $request->file('cover')->store('projects', 'public');
         }
-        
-        
+
+
         $validateCategories = $request->validate([
             'categories' => 'required|array|min:1',
         ]);
@@ -72,8 +74,8 @@ class ProjectController extends Controller
         $project->cover = $imagePath;
         $project->creator_id = Auth::id();
         $project->status = 'upcoming';
-        $project->save();  
-        
+        $project->save();
+
         // take the id from the last project inserted
         $idProject = $project->id;
 
@@ -86,29 +88,30 @@ class ProjectController extends Controller
             $projectCategory->project_id = $idProject;
             $projectCategory->save();
         }
-        
+
         // also the creator of the project is add like a member of that project like administrator
         $projectMember = new ProjectMember;
         $projectMember->user_id = Auth::id();
         $projectMember->project_id = $idProject;
         $projectMember->member_type = 'admin';
-        $projectMember->status = 'accept';       
-        $projectMember->save();   
+        $projectMember->status = 'accept';
+        $projectMember->save();
 
-        return redirect('/projects')->with('message', 'Project created successfully and logged in');       
-
+        return redirect('/projects')->with('message', 'Project created successfully and logged in');
     }
 
-    function createCollaborator(Project $project){
+    function createCollaborator(Project $project)
+    {
 
         // take all collaborator alredy associed to the project in one array
         $collaboratorsOfProject = $project->members->pluck('user_id')->toArray();
         $collaborators = User::whereNotIN('id', $collaboratorsOfProject)->get();
 
-        return view('projects.add', ['project'=>$project, 'collaborators'=>$collaborators ]);
+        return view('projects.add', ['project' => $project, 'collaborators' => $collaborators]);
     }
 
-    function storeCollaborator(Request $request, Project $project, User $collaborator){
+    function storeCollaborator(Request $request, Project $project, User $collaborator)
+    {
 
         //$collaborator->project_id = $project->id;
 
@@ -123,11 +126,10 @@ class ProjectController extends Controller
         $projectMember->user_id = $collaborator->id;
         $projectMember->project_id = $project->id;
         $projectMember->member_type = 'collaborator';
-        $projectMember->status = 'pending';       
-        $projectMember->save();  
+        $projectMember->status = 'pending';
+        $projectMember->save();
 
         return redirect()->route('project.show', $project);
-    
     }
 
     //delete collaborator when click on the delete button inside the page of a project
