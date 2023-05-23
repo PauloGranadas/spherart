@@ -34,7 +34,7 @@ class UserController extends Controller
         auth()->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/')->with('message', 'You have benn logged out');
+        return redirect('/');
     }
     //Login User
     public function login()
@@ -52,7 +52,7 @@ class UserController extends Controller
         ]);
         if (auth()->attempt($formFields)) {
             $request->session()->regenerate();
-            return redirect('/')->with('message', 'You are now logged in!!');
+            return redirect('/projects');
         }
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
     }
