@@ -105,10 +105,13 @@ class ProjectController extends Controller
 
     function createCollaborator(Project $project)
     {
-
         // take all collaborator alredy associed to the project in one array
         $collaboratorsOfProject = $project->members->pluck('user_id')->toArray();
-        $collaborators = User::whereNotIN('id', $collaboratorsOfProject)->get();
+        //$collaborators = User::whereNotIN('id', $collaboratorsOfProject)->get();
+
+        $collaborators = User::whereNotIN('id', $collaboratorsOfProject)->latest()
+                                        ->filter(request(['search']))->get();
+        
 
         return view('projects.add', ['project' => $project, 'collaborators' => $collaborators]);
     }
