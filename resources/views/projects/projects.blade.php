@@ -15,7 +15,17 @@
         </div>
         @endauth        
         
-        <div class="row row-cols-1 row-cols-md-3 g-4 my-4">   
+        <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+
+        <script>
+            $('.grid').masonry({
+                itemSelector: '.grid-item',
+                columnWidth: '.grid-sizer',
+                percentPosition: true
+            });
+        </script>
+        
+        <div class="row row-cols-1 row-cols-md-3 g-4 my-4" data-masonry='{"percentPosition": true }'>   
            
             @foreach ($projects as $project)
                 <div class="col">
