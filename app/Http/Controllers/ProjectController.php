@@ -137,7 +137,11 @@ class ProjectController extends Controller
     public function delete(ProjectMember $collaborator){
         $collaborator->delete();
 
+<<<<<<< HEAD
         return redirect()->route("project.show", $collaborator->project_id)->with('success',"Collaborator deleted successfully");
+=======
+        return redirect()->route("project.show", $collaborator->project_id)->with('message',"Collaborator deleted successfully");
+>>>>>>> main
        // return response()->json(['message'=>'Collaborator deleted successfully']);
     }
 
@@ -146,8 +150,14 @@ class ProjectController extends Controller
      public function deleteProject(Project $project){
         $project->delete();
 
+<<<<<<< HEAD
         return redirect()->route("projects.index", $project)->with('success',"Project deleted successfully");
     }
+=======
+        return redirect()->route("projects.index", $project)->with('message',"Project deleted successfully");
+    }
+
+>>>>>>> main
 }
 
 

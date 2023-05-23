@@ -74,7 +74,7 @@
       @endauth
       <div class="position-relative">
         <!--Images to showcase the project-->
-        <img src="{{$project->cover ? asset('storage/' . $project->cover) : asset('images/no-image.png')}}" class="img-fluid rounded mx-auto d-block mt-4" alt="Cover Image" id="project_showcase" style="object-fit: cover; max-height: 500px; width: 100%;"/>
+        <img src="{{$project->cover ? asset('storage/' . $project->cover) : asset('images/cover-no-image.png')}}" class="img-fluid rounded mx-auto d-block mt-4" alt="Cover Image" id="project_showcase" style="object-fit: cover; max-height: 500px; width: 100%;"/>
       
         <div class="position-absolute top-0 end-0 bg-primary text-white p-3 h-100" style="max-width: 30%; min-width: 20%; border-top-right-radius: 5px; border-bottom-right-radius: 5px; opacity: 0.9;">
           <!-- Project Title -->
@@ -140,6 +140,7 @@
             </td>
             <td>
               <form action="{{route('collaborator.delete', $collaborator) }}" method="POST">
+<<<<<<< HEAD
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-link btn-sm btn-rounded">
@@ -147,6 +148,14 @@
                 </button>
             </form>
             
+=======
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-link btn-sm btn-rounded">
+                    Delete
+                  </button>
+              </form>
+>>>>>>> main
             </td>
           </tr>
         @endforeach

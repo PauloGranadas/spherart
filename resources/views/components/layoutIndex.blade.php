@@ -105,10 +105,10 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                             <li>
-                                <a class="dropdown-item" href="/users/{{auth()->user()->id}}/edit">My profile</a>
+                                <a class="dropdown-item" href="{{route('user.edit', auth()->user()->id)}}">My profile</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="/projects">My Projects</a>
+                                <a class="dropdown-item" href="#">Settings</a>
                             </li>
                             <form method="POST" action="/logout">
                                 @csrf
@@ -150,6 +150,7 @@
         {{$slot}}
 
     </main>
+<<<<<<< HEAD
     <div class="container">
         @if(session('success'))
         <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 9999;">
@@ -160,6 +161,19 @@
                 </div>
                 <div class="toast-body">
                     {{ session('success') }}
+=======
+
+    <div class="container">
+        @if(session('message'))
+        <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 9999;">
+            <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="3000">
+                <div class="toast-header">
+                    <strong class="me-auto"></strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    {{ session('message') }}
+>>>>>>> main
                 </div>
             </div>
         </div>
@@ -176,6 +190,7 @@
         });
     </script>
 
+   
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.js">
     </script>

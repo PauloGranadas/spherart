@@ -29,7 +29,7 @@ Route::get('/collaborators/{user}', [UserController::class, 'show']);
 //Show Register/Create User Form
 Route::get('/register', [UserController::class, 'create'])->name('login')->middleware('guest');
 //Create New User
-Route::post('/users', [UserController::class, 'store']);
+Route::post('/useradd', [UserController::class, 'store']);
 //Logout user
 Route::get('/logout', [UserController::class, 'logout'])->middleware('auth');
 //Show Login Form
@@ -37,9 +37,9 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 //Login
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 //Show Edit User
-Route::get('/users/{user}/edit', [UserController::class, 'edit'])->middleware('auth');
+Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.edit')->middleware('auth');
 //Update User
-Route::post('/users', [UserController::class, 'update']);
+Route::put('/users/{user}', [UserController::class, 'update'])->name('user.update');
 
 
 
@@ -73,5 +73,8 @@ Route::post('/project', [ProjectController::class, 'store'])->name('projects.sto
 // Show Create Project Page Form
 Route::get('/project/create', [ProjectController::class, 'create']);
 
-//Countries API
-Route::get('/countries', 'CountryController@index');
+//to delete collaborator from the project
+Route::delete('/projects/Collaborators/delete/{collaborator}', [ProjectController::class, 'delete'])->name('collaborator.delete');
+
+//to delete project from the projects of the user's page
+Route::delete('/projects/delete/{project}', [ProjectController::class, 'deleteProject'])->name('project.delete');

@@ -62,9 +62,7 @@ class UserController extends Controller
     {
         //return view('users.register');
         $categories = Category::all();
-        $countryController = new CountryController();
-        $countries = $countryController->getCountries();
-        return view('users.register', compact('countries'))->with('categories', $categories);
+        return view('users.register')->with('categories', $categories);
     }
     //Create New User
     public function store(Request $request)
@@ -78,8 +76,7 @@ class UserController extends Controller
             'locality' => 'required',
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => 'required|confirmed|min:6',
-            'bio' => 'required|min:50',
-            /* 'g-recaptcha-response' => 'required|recaptcha', */
+            'bio' => 'required|min:50'            
         ]);
 
 
@@ -111,25 +108,24 @@ class UserController extends Controller
 
         //Login
         // using the auth() helper
-        auth()->login($user);
+        //auth()->login($user);
 
 
-        return redirect('/')->with('message', 'User created successfully and logged in');
+        return redirect()->route('login')->with('message', 'User created successfully and logged in');
     }
+    
     //Show Edit Form
     public function edit(User $user)
     {
+       
+        $userCategories = $user->categories->pluck('id')->toArray();  
         $categories = Category::all();
-        $countryController = new CountryController();
-        $countries = $countryController->getCountries();
-        /* return view('users.edit', ['user' => $user, 'categories' => $categories]); */
-        return view('users.edit', compact('countries'), ['user' => $user, 'categories' => $categories]);
+        
+        return view('users.edit', ['user' => $user, 'categories' => $categories, 'userCategories'=>$userCategories]);
     }
     // update User information
     public function update(Request $request, User $user)
     {
-
-
         // Validate the form data
         $validatedData = $request->validate([
             'firstname' => 'required',
@@ -148,8 +144,9 @@ class UserController extends Controller
             'bio' => 'required|min:50',
             'country' => ['required', 'min:3'],
             'locality' => 'required',
+            'categories' => 'required|array',
+            'categories.*' => 'exists:categories,id',
         ]);
-
 
 
         // Update user attributes
@@ -174,10 +171,13 @@ class UserController extends Controller
             $user->password = Hash::make($request->input('password'));
         }
 
+        $user->categories()->sync($request->input('categories'));
+
         // Save the updated user in the database
         $user->save();
 
         // Redirect or perform any other necessary actions
+        return redirect()->route('user.edit', $user)->with('message', 'User updated successfully.');
     }
 
     public function messages()

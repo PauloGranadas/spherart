@@ -11,7 +11,7 @@
         </header>
     </div>
     <div class="container">
-        <form method="POST" action="/users" enctype="multipart/form-data">
+        <form method="POST" action="/useradd" enctype="multipart/form-data">
             @csrf
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-4">
@@ -47,14 +47,12 @@
                 </div>
 
                 <div class="col">
-                    <div class="form-select">
-                        <label for="country">Country</label>
-                        <select name="country" id="country" class="form-control">
-                            <option value="{{old('country')}}">Select a country</option>
-                            @foreach ($countries as $country)
-                                <option value="{{ $country['name'] }}">{{ $country['name'] }}</option>
-                             @endforeach
-                        </select>
+                    <div class="form-outline">
+                        <input type="text" id="form3Example4" class="form-control" name="country" value="{{old('country')}}" />
+                        <label class="form-label" for="form3Example4">Country</label>
+                        @error('country')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
                     </div>
                 </div>
             </div>
@@ -110,7 +108,7 @@
                     Image Profile
                 </label>
                 <br>
-                <input type="file" {{--  --}} class="btn btn-primary" name="avatar" />
+                <input type="file" class="btn btn-primary" name="avatar" />
                 @error('avatar')
                  <p class="text-danger">{{$message}}</p>
                 @enderror
@@ -123,18 +121,11 @@
                 @enderror
             </div>
 
-           
+            <!-- Checkbox -->           
+
+            @include('partials._categories')      
+
             
-
-            <!-- Checkbox -->
-            <h3>Choose your arts category/categories:</h3>
-
-            @include('partials._categories')
-            
-
-            {{-- Google Recaptcha --}}
-            {{-- @captcha --}}
-
 
             <!-- Submit button -->
             <button type="submit" class="btn btn-primary">Sign up</button>
