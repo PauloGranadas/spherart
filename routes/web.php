@@ -72,3 +72,6 @@ Route::delete('/projects/Collaborators/delete/{collaborator}', [ProjectControlle
 
 //to delete project from the projects of the user's page
 Route::delete('/projects/delete/{project}', [ProjectController::class, 'deleteProject'])->name('project.delete');
+
+// search collaborator for the project
+Route::get('/search/{}', [ProjectController::class, 'searchCollaborator'])->name('search.collaborators');

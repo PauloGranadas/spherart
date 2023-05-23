@@ -149,13 +149,26 @@ class ProjectController extends Controller
         return redirect()->route("projects.index", $project)->with('message',"Project deleted successfully");
     }
 
-    function searchCollaborator(Request $request)
+    function searchCollaborator(Request $request, Project $project)
     {
-        $keyword = $request->input('keyword');
-   
-        $results = User::where('nikname', 'like', "%$keyword%")
+        $keyword = $request->input('search');
+
+        // take all collaborator alredy associed to the project in one array
+        $collaboratorsOfProject = $project->members->pluck('user_id')->toArray();
+        $result = User::whereNotIN('id', $collaboratorsOfProject)
+                        ->where('nikname', 'like', "%$keyword%")
                         ->get();
-                return view('search.results', compact('results', 'keyword'));
-        }
+   
+        //$results = User::where('nikname', 'like', "%$keyword%")->get();
+
+                //return view('search.results', compact('results', 'keyword'));
+        //return view('projects.add', ['project' => $project, 'collaborators' => $collaborators]);
+        
+        return view('/', [$keyword, $result, $project]);
+
+       // return redirect()->route('project.collaborator.create',[$project,$result]);
+
+        //name('project.collaborator.create')
+    }
 
 }
