@@ -15,3 +15,6 @@ class Controller extends BaseController
         $categories = Category::all();
     } */
 }
+
+
+
