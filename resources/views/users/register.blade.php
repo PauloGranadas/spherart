@@ -45,18 +45,37 @@
                         @enderror
                     </div>
                 </div>
-
+                    {{-- ///////////////////////////////////////////////////// --}}
                 <div class="col">
+                    <div class="form-outline">
+                        <input type="text" id="form3Example9" class="form-control" name="country" value="{{old('country')}}" />
+                        <label class="form-label" for="form3Example9">Country</label>
+                        @error('country')
+                        <p class="text-danger">{{$message}}</p>
+                        @enderror
+                    </div>
+
+                </div>
+
+                {{-- <div class="col">
                     <div class="form-select">
                         <label for="country">Country</label>
-                        <select name="country" id="country" class="form-control">
-                            <option value="{{old('country')}}">Select a country</option>
-                            @foreach ($countries as $country)
-                                <option value="{{ $country['name'] }}">{{ $country['name'] }}</option>
-                             @endforeach
-                        </select>
+                        
+                        <input type="text" name="country" id="country" required>
+
+                                <label for="location">Location:</label>
+                                <input type="text" name="location" id="location" required>
+                                <select name="country" id="country" class="form-control">
+                                     <option value="{{old('country')}}">Select a country</option>
+                                            @foreach ($countries as $code => $name)
+                                                <option value="{{ $code }}">{{ $name }}</option>
+                                            @endforeach
+                            
+                                </select>
                     </div>
-                </div>
+                </div> --}}
+
+                {{-- /////////////////////////////////////////////////////// --}}
             </div>
 
             <div class="row mb-4">

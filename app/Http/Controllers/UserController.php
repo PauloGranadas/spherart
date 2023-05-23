@@ -62,9 +62,9 @@ class UserController extends Controller
     {
         //return view('users.register');
         $categories = Category::all();
-        $countryController = new CountryController();
-        $countries = $countryController->getCountries();
-        return view('users.register', compact('countries'))->with('categories', $categories);
+        /* $countryController = new CountryController();
+        $countries = $countryController->index(); */
+        return view('users.register', /* compact('countries') */)->with('categories', $categories);
     }
     //Create New User
     public function store(Request $request)
@@ -121,7 +121,7 @@ class UserController extends Controller
     {
         $categories = Category::all();
         $countryController = new CountryController();
-        $countries = $countryController->getCountries();
+        $countries = $countryController->index();
         /* return view('users.edit', ['user' => $user, 'categories' => $categories]); */
         return view('users.edit', compact('countries'), ['user' => $user, 'categories' => $categories]);
     }
