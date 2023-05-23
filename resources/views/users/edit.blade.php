@@ -11,8 +11,10 @@
         </header>
     </div>
     <div class="container">
-        <form method="POST" action="/users" enctype="multipart/form-data">
+        <form method="POST" action="{{route('user.update', $user)}}" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
+
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-4">
                 <div class="col">
@@ -105,7 +107,7 @@
                 </div>
             </div>
             {{-- Importe File Feature  --}}
-            <div class="mb-4">
+            <div class="mb-4 d-inline-flex flex-column-reverse align-items-start">
                 <label for="avatar" class="inline-block text-lg mb-2">
                     Image Profile
                 </label>
@@ -114,7 +116,7 @@
                 @error('avatar')
                  <p class="text-danger">{{$message}}</p>
                 @enderror
-                <img class="w-48 mr-6 mb-6"
+                <img class="w-48 mr-6 mb-6" style="height:150px;"
                 src="{{$user->avatar ? asset('storage/' . $user->avatar) : asset('/images/no-image.png')}}"
                 alt=""
                 >
@@ -130,8 +132,46 @@
             
             
 
-            {{-- Categories --}}
-            @include('partials._categories')
+            {{-- Categories  {{ in_array($category->id, $selectedCategories) ? 'checked' : '' }} --}}
+            
+            <label for="options" class="form-label mt-3">Choose the categories:</label>
+            <div class="checkbox-group border border-secondary rounded p-4 mb-4">
+                @foreach($categories as $category)
+                    <label class="btn  {{ in_array($category->id, $userCategories) ? 'btn-outline-success' : 'btn-outline-secondary' }} btn-rounded mb-2">                        
+                        <input type="checkbox" id="{{$category->id }}" value="{{$category->id}}" name="categories[]" class="d-none" {{ in_array($category->id, $userCategories) ? 'checked' : '' }} >
+                        {{$category->area_name}}
+                    </label>
+                @endforeach           
+            </div>
+            @if($errors->has('categories'))
+                <p class="text-danger">{{ $errors->first('categories') }}</p>
+            @endif
+
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                const checkboxGroup = document.querySelector('.checkbox-group');
+                const labels = checkboxGroup.querySelectorAll('label');
+
+                labels.forEach(function(label) {
+                    const checkbox = label.querySelector('input[type="checkbox"]');
+
+                    label.addEventListener('click', function() {
+                    checkbox.checked = !checkbox.checked;
+
+                    if (checkbox.checked) {
+                        label.classList.add('btn-outline-success');
+                    } else {
+                        label.classList.remove('btn-outline-success');
+                    }
+                    });
+                    
+                });
+                });
+            </script>
+
+
+
 
             {{-- Google Recaptcha --}}
             {{-- @captcha --}}
