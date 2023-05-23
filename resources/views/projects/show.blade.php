@@ -77,18 +77,15 @@
               <span class="fw-normal mb-1">{{$collaborator->member_type}}</span>
             </td>
             <td>
-              @auth
-              <form action="{{route('collaborator.delete', $collaborator) }}" method="POST">
-                  @csrf
-
-                      
-                  @if (auth()->check() && $project->creator_id === auth()->user()->id)
-                  <button type="submit" class="btn btn-link btn-sm btn-rounded">
-                    Delete
-                  </button>
-                  @endif
-              </form>
-              @endauth
+              @if (auth()->check() && $project->creator_id === auth()->user()->id)
+                <form action="{{route('collaborator.delete', $collaborator) }}" method="POST">
+                    @csrf         
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-link btn-sm btn-rounded">
+                      Delete
+                    </button>                  
+                </form>
+              @endif
             </td>
           </tr>
         @endforeach

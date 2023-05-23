@@ -67,6 +67,12 @@ Route::post('/project', [ProjectController::class, 'store'])->name('projects.sto
 // Show Create Project Page Form
 Route::get('/project/create', [ProjectController::class, 'create']);
 
+//Show Edit Project
+/* Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('project.edit')->middleware('auth'); */
+Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
+//Update User
+Route::put('/projects/{project}', [ProjectController::class, 'update'])->name('projects.update');
+
 //to delete collaborator from the project
 Route::delete('/projects/Collaborators/delete/{collaborator}', [ProjectController::class, 'delete'])->name('collaborator.delete');
 
@@ -75,3 +81,4 @@ Route::delete('/projects/delete/{project}', [ProjectController::class, 'deletePr
 
 // search collaborator for the project
 Route::get('/search/{}', [ProjectController::class, 'searchCollaborator'])->name('search.collaborators');
+
