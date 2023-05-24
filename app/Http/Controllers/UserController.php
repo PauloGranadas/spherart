@@ -9,7 +9,7 @@ use App\Models\ArtistCategory;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 
-
+use GuzzleHttp\Client;
 
 class UserController extends Controller
 {
@@ -64,8 +64,11 @@ class UserController extends Controller
         //return view('users.register');
         $categories = Category::all();
 
+        $client = new Client();
+        $response = $client->get('https://restcountries.com/v3.1/all');
+        $countries = json_decode($response->getBody(), true);
 
-        return view('users.register')->with('categories', $categories);
+        return view('users.register', ['categories' => $categories, 'countries' => $countries]);
     }
     //Create New User
     public function store(Request $request)

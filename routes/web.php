@@ -5,6 +5,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RegisterController;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -81,6 +83,7 @@ Route::delete('/projects/delete/{project}', [ProjectController::class, 'deletePr
 
 // search collaborator for the project
 //Route::get('/', [ProjectController::class, 'createCollaborator'])->name('collaborators.search');
+
 
 
 
