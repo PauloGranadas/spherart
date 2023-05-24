@@ -118,7 +118,7 @@
                                 <a class="dropdown-item" href="{{route('user.edit', auth()->user()->id)}}">My profile</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">Settings</a>
+                                <a class="dropdown-item" href="/projects">My Projects</a>
                             </li>
                             <form method="POST" action="/logout">
                                 @csrf
