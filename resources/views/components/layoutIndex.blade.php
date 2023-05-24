@@ -64,6 +64,10 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/about">About Us</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact">Contact Us</a>
+                        </li>
                     </ul>
                     <!-- Left links -->
                 </div>
@@ -101,14 +105,24 @@
                     @auth
                     <div class="dropdown" style="color: rgb(255, 255, 255);">
                         <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                           <span class="mb-2 mb-lg-0"> Welcome {{auth()->user()->nikname}}</span> <i class="fa-solid fa-gear"></i>
+                            <span class="mb-2 mb-lg-0">{{auth()->user()->nikname}} </span>
+                           <img
+                                    src="{{auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : asset('images/no-image.png')}}"
+                                    class="rounded-circle"
+                                    height="25"
+                                    width="25"
+                                    alt="Black and White Portrait of a Man"
+                                    loading="lazy"
+                                /> 
+                           
+                                  <i class="fas fa-angle-down"></i>  
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                             <li>
                                 <a class="dropdown-item" href="{{route('user.edit', auth()->user()->id)}}">My profile</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#">Settings</a>
+                                <a class="dropdown-item" href="/projects">My Projects</a>
                             </li>
                             <form method="POST" action="/logout">
                                 @csrf
@@ -166,6 +180,15 @@
         </div>
         @endif
     </div>
+
+    {{-- <footer class="fixed-bottom bg-light text-center text-lg-start">
+        <!-- Copyright -->
+        <div class="text-center p-3 small" style="background-color: rgba(0, 0, 0, 0.2);">
+          © 2023 Copyright:
+          <a class="text-dark" href="https://spherart.com/">Spherart</a>
+        </div>
+        <!-- Copyright -->
+      </footer> --}}
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {

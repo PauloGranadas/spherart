@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ContactFormController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +45,10 @@ Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('user.ed
 //Update User
 Route::put('/users/{user}', [UserController::class, 'update'])->name('user.update');
 
-
+//contact us
+Route::get('/contact', [ContactController::class, 'contactUs'])->name('contactUs');
+//contact form
+Route::post('/contactForm', [ContactController::class, 'sendContactForm'])->name('sendContactForm');
 
 //Show About Us Page
 Route::get('/about', [UserController::class, 'aboutUs']);
@@ -58,6 +65,12 @@ Route::get('/projects/{project}/add', [ProjectController::class, 'createCollabor
 // Store Add Collaborator a Project selected
 Route::post('/projects/{project}/add/{collaborator}', [ProjectController::class, 'storeCollaborator'])->name('projects.collaborators.store');
 
+//to delete collaborator from the project
+Route::delete('/projects/Collaborators/delete/{collaborator}', [ProjectController::class, 'delete'])->name('collaborator.delete');
+
+//to delete project from the projects of the user's page
+Route::delete('/projects/delete/{project}', [ProjectController::class, 'deleteProject'])->name('project.delete');
+
 // Show Create Project Page Form
 //Route::get('/projects/register', [ProjectController::class, 'create']);
 
@@ -70,7 +83,7 @@ Route::get('/project/create', [ProjectController::class, 'create']);
 //Show Edit Project
 /* Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('project.edit')->middleware('auth'); */
 Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
-//Update User
+//Update Project
 Route::put('/projects/{project}', [ProjectController::class, 'update'])->name('projects.update');
 
 //to delete collaborator from the project
@@ -80,5 +93,8 @@ Route::delete('/projects/Collaborators/delete/{collaborator}', [ProjectControlle
 Route::delete('/projects/delete/{project}', [ProjectController::class, 'deleteProject'])->name('project.delete');
 
 // search collaborator for the project
-Route::get('/search/{}', [ProjectController::class, 'searchCollaborator'])->name('search.collaborators');
+//Route::get('/', [ProjectController::class, 'createCollaborator'])->name('collaborators.search');
+
+
+
 

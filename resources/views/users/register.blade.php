@@ -47,13 +47,19 @@
                 </div>
 
                 <div class="col">
-                    <div class="form-outline">
+                   <!-- <div class="form-outline">
                         <input type="text" id="form3Example4" class="form-control" name="country" value="{{old('country')}}" />
                         <label class="form-label" for="form3Example4">Country</label>
-                        @error('country')
+                       
+                    </div> -->
+                    <select name="country" class="form-select" id="country">
+                        @foreach($countries as $country)
+                            <option value="{{ $country['name']['common'] }}">{{ $country['name']['common'] }}</option>
+                        @endforeach
+                    </select>
+                    @error('country')
                         <p class="text-danger">{{$message}}</p>
-                        @enderror
-                    </div>
+                    @enderror
                 </div>
                 
                 
@@ -130,9 +136,9 @@
 
             <!-- Checkbox -->           
 
-            @include('partials._categories')      
-
+            @include('partials._categories')              
             
+        
 
             <!-- Submit button -->
             <button type="submit" class="btn btn-primary">Sign up</button>
