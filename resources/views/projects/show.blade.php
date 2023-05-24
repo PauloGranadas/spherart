@@ -3,9 +3,12 @@
     <div class="container">
 
       @auth
+      @if (auth()->check() && $project->creator_id === auth()->user()->id)
+
         <div class="text-right">
           <a href="/projects/{{$project->id}}/add" class="btn btn-warning btn-rounded my-2 fs-6"><i class="fas fa-people-arrows"></i> add Collaborator</a>
         </div>
+      @endif
       @endauth
       <div class="position-relative">
         <!--Images to showcase the project-->
@@ -64,8 +67,10 @@
                     class="rounded-circle"
                     />
                 <div class="ms-3">
-                  <p class="fw-bold mb-1">{{$collaborator->user->nikname}}</p>
-                  <p class="text-muted mb-0">{{$collaborator->user->email}}</p>
+                  {{-- <p class="fw-bold mb-1">{{$collaborator->user->nikname}}</p> --}}
+                  <a href="/collaborators/{{$collaborator->user->id}}"  class="fw-bold mb-1">{{$collaborator->user->nikname}}</a>                        
+
+                  {{-- <p class="text-muted mb-0">{{$collaborator->user->email}}</p> --}}
                 </div>
               </div>
             </td>
@@ -74,13 +79,15 @@
               <span class="fw-normal mb-1">{{$collaborator->member_type}}</span>
             </td>
             <td>
-              <form action="{{route('collaborator.delete', $collaborator) }}" method="POST">
-                  @csrf
-                  @method('DELETE')
-                  <button type="submit" class="btn btn-link btn-sm btn-rounded">
-                    Delete
-                  </button>
-              </form>
+              @if (auth()->check() && $project->creator_id === auth()->user()->id)
+                <form action="{{route('collaborator.delete', $collaborator) }}" method="POST">
+                    @csrf         
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-link btn-sm btn-rounded">
+                      Delete
+                    </button>                  
+                </form>
+              @endif
             </td>
           </tr>
         @endforeach
