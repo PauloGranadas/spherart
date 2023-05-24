@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Project;
 use App\Models\Category;
-use App\Models\ProjectCategory;
-use App\Models\ProjectMember;
 use Illuminate\Http\Request;
+use App\Models\ProjectMember;
+use App\Models\ProjectCategory;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\ProjectPendingNotification;
 
 class ProjectController extends Controller
 {
@@ -133,6 +134,10 @@ class ProjectController extends Controller
         $projectMember->member_type = 'collaborator';
         $projectMember->status = 'pending';
         $projectMember->save();
+
+        //$collaboratorEmail = $collaborator->email;
+
+        //$collaborator->notify(new ProjectPendingNotification());
 
         return redirect()->route('project.show', $project)->with('message', 'Collaboration request demand sends successfully!');
     }
