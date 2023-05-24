@@ -42,8 +42,9 @@
                         class="rounded-circle"
                         />
                     <div class="ms-3">
-                    <p class="fw-bold mb-1">{{$collaborator->nikname}}</p>
-                    <p class="text-muted mb-0">{{$collaborator->email}}</p>
+                    {{-- <p class="fw-bold mb-1">{{$collaborator->nikname}}</p> --}}
+                    <a href="/collaborators/{{$collaborator->id}}"  class="fw-bold mb-1">{{$collaborator->nikname}}</a>                        
+                    {{-- <p class="text-muted mb-0">{{$collaborator->email}}</p> --}}
                     </div>
                 </div>
                 </td>
