@@ -29,7 +29,7 @@ class ContactController extends Controller
         ];
 
         //Mail::to('reyhan.baykara@gmail.com')->send(new ContactFormMail($data));
-    return redirect('/');
+        return redirect('/')->with('message', 'Thank you for contacting us. We will get back to you soon!');
         //return redirect()->back()->with('success', 'Thank you for contacting us. We will get back to you soon!');
     }
 }
