@@ -181,14 +181,14 @@
         @endif
     </div>
 
-    <footer class="bg-light text-center text-lg-start">
+    {{-- <footer class="fixed-bottom bg-light text-center text-lg-start">
         <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        <div class="text-center p-3 small" style="background-color: rgba(0, 0, 0, 0.2);">
           © 2023 Copyright:
           <a class="text-dark" href="https://spherart.com/">Spherart</a>
         </div>
         <!-- Copyright -->
-      </footer>
+      </footer> --}}
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {

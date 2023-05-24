@@ -46,7 +46,7 @@
           </p>
 
 </div>
-  <div class="justified-content">
+  <div class="justified-content ">
     <div class="container py-5">
       <div class="row">
         <div class="col-md-8">
@@ -62,7 +62,7 @@
           </p>
         </div>
 
-        <div class="col-md-8">
+        <div class="col-md-8 mb-4">
           <p class="lead">
             Collaboration lies at the heart of our platform. Artists can easily connect with one another, form teams, and embark on<b> <strong>ambitious joint projects</strong></b>. Looking for a composer to enhance your film score? Seeking a choreographer to bring movement to your theatrical production? Or perhaps you're a novelist searching for a cover artist for your next book. Whatever your creative aspirations, <b><strong>our platform provides the tools</strong></b> and connections to make your visions a reality.
           </p>
@@ -72,6 +72,7 @@
           <p class="lead">
             We actively foster a nurturing and collaborative environment where respect, openness, and mutual support thrive. Join our vibrant artistic community today and unlock the immense potential that lies within collaborative creation. Discover kindred spirits, forge lifelong connections, and embark on extraordinary artistic journeys. Together, we can break new ground, inspire one another, and shape <b><strong>the future of art</strong></b>.
           </p>
+          
 
         </div>
       </div>
