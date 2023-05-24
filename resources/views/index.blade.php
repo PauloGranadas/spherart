@@ -17,8 +17,8 @@
                     <img src="images/spherart_w.png" alt="" width="75%">
                     <h2>Connect True Creativity</h2>
 
-                    <a class="btn btn-outline-light btn-lg m-2" href="projects" role="button" rel="nofollow" target="_blank">Projects</a>
-                    <a class="btn btn-outline-light btn-lg m-2" href="collaborators" role="button">Collaborators</a>
+                    <a class="btn btn-outline-light btn-lg m-2" href="/projects" role="button" rel="nofollow">Projects</a>
+                    <a class="btn btn-outline-light btn-lg m-2" href="/collaborators" role="button">Collaborators</a>
                 </div>
             </div>
         </div>
