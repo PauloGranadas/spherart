@@ -10,6 +10,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 
 
+
 class UserController extends Controller
 {
     //Display colaborators
@@ -34,7 +35,7 @@ class UserController extends Controller
         auth()->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/')->with('message', 'You have benn logged out');
+        return redirect('/');
     }
     //Login User
     public function login()
@@ -52,7 +53,7 @@ class UserController extends Controller
         ]);
         if (auth()->attempt($formFields)) {
             $request->session()->regenerate();
-            return redirect('/')->with('message', 'You are now logged in!!');
+            return redirect('/projects');
         }
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
     }
@@ -62,6 +63,8 @@ class UserController extends Controller
     {
         //return view('users.register');
         $categories = Category::all();
+
+
         return view('users.register')->with('categories', $categories);
     }
     //Create New User
@@ -75,8 +78,8 @@ class UserController extends Controller
             'country' => ['required', 'min:3'],
             'locality' => 'required',
             'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'password' => 'required|confirmed|min:6',
-            'bio' => 'required|min:50'            
+            'password' => ['required', 'confirmed', 'min:6', "regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/"],
+            'bio' => 'required|min:50'
         ]);
 
 
@@ -113,15 +116,15 @@ class UserController extends Controller
 
         return redirect()->route('login')->with('message', 'User created successfully and logged in');
     }
-    
+
     //Show Edit Form
     public function edit(User $user)
     {
-       
-        $userCategories = $user->categories->pluck('id')->toArray();  
+
+        $userCategories = $user->categories->pluck('id')->toArray();
         $categories = Category::all();
-        
-        return view('users.edit', ['user' => $user, 'categories' => $categories, 'userCategories'=>$userCategories]);
+
+        return view('users.edit', ['user' => $user, 'categories' => $categories, 'userCategories' => $userCategories]);
     }
     // update User information
     public function update(Request $request, User $user)
@@ -134,6 +137,8 @@ class UserController extends Controller
                 'required',
                 'email',
                 Rule::unique('users')->ignore($user->id),
+                'email:rfc,dns',
+
             ],
 
             'nikname' => [
@@ -146,6 +151,7 @@ class UserController extends Controller
             'locality' => 'required',
             'categories' => 'required|array',
             'categories.*' => 'exists:categories,id',
+            /*   'password' => ['required', 'confirmed', 'min:6', "regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/"], */
         ]);
 
 
@@ -160,10 +166,16 @@ class UserController extends Controller
             // Nikname has changed, perform additional checks or actions if needed
             $user->nikname = $validatedData['nikname'];
         }
+        if ($request->hasFile('avatar')) {
+            $imagePath = $request->file('avatar')->store('avatars', 'public');
+        }
         $user->bio = $validatedData['bio'];
         $user->locality = $validatedData['locality'];
         $user->country = $validatedData['country'];
         // Update other user attributes...
+        if ($request->hasFile('avatar')) {
+            $user->avatar = $imagePath; 
+        }
 
         // Check if a new password is provided
         if ($request->filled('password')) {

@@ -15,7 +15,17 @@
         </div>
         @endauth        
         
-        <div class="row row-cols-1 row-cols-md-3 g-4 my-4">   
+        <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+
+        <script>
+            $('.grid').masonry({
+                itemSelector: '.grid-item',
+                columnWidth: '.grid-sizer',
+                percentPosition: true
+            });
+        </script>
+        
+        <div class="row row-cols-1 row-cols-md-3 g-4 my-4" data-masonry='{"percentPosition": true }'>   
            
             @foreach ($projects as $project)
                 <div class="col">
@@ -45,15 +55,15 @@
                         
                         @if (auth()->check() && $project->creator_id === auth()->user()->id)
                             <div class="d-flex justify-content-end">
-                                <a href="/projects/{{$project->id}}/add" class="btn btn-outline-secondary btn-rounded" data-mdb-ripple-color="dark">Add collaborator</a> 
-                               <form action="{{route('project.delete', $project) }}" method="POST">
+                                <a href="/projects/{{$project->id}}/add" class="btn btn-outline-secondary btn-rounded" data-mdb-ripple-color="dark">Add collaborator</a>
+                                <form action="{{route('project.delete', $project) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-outline-danger btn-rounded mx-2" data-mdb-ripple-color="dark"><i class="fas fa-trash"></i></button> 
-                                </form>                           
-                                <a href=""  class="btn btn-outline-success btn-rounded" data-mdb-ripple-color="dark"><i class="fas fa-gear"></i></a>
+                                </form> 
+                                <a href="{{route('projects.edit', $project) }}"  class="btn btn-outline-success btn-rounded" data-mdb-ripple-color="dark"><i class="fas fa-gear"></i></a>
                             </div>
-                        @endif                        
+                        @endif
                     </div>
                     </div>
                 </div>            

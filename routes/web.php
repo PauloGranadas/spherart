@@ -78,8 +78,20 @@ Route::post('/project', [ProjectController::class, 'store'])->name('projects.sto
 // Show Create Project Page Form
 Route::get('/project/create', [ProjectController::class, 'create']);
 
+//Show Edit Project
+/* Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('project.edit')->middleware('auth'); */
+Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
+//Update Project
+Route::put('/projects/{project}', [ProjectController::class, 'update'])->name('projects.update');
+
 //to delete collaborator from the project
 Route::delete('/projects/Collaborators/delete/{collaborator}', [ProjectController::class, 'delete'])->name('collaborator.delete');
 
 //to delete project from the projects of the user's page
 Route::delete('/projects/delete/{project}', [ProjectController::class, 'deleteProject'])->name('project.delete');
+
+// search collaborator for the project
+//Route::get('/', [ProjectController::class, 'createCollaborator'])->name('collaborators.search');
+
+
+
