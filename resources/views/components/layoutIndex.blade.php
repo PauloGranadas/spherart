@@ -101,7 +101,17 @@
                     @auth
                     <div class="dropdown" style="color: rgb(255, 255, 255);">
                         <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-                           <span class="mb-2 mb-lg-0"> Welcome {{auth()->user()->nikname}}</span> <i class="fa-solid fa-gear"></i>
+                            <span class="mb-2 mb-lg-0">{{auth()->user()->nikname}} </span>
+                           <img
+                                    src="{{auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : asset('images/no-image.png')}}"
+                                    class="rounded-circle"
+                                    height="25"
+                                    width="25"
+                                    alt="Black and White Portrait of a Man"
+                                    loading="lazy"
+                                /> 
+                           
+                                  <i class="fas fa-angle-down"></i>  
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                             <li>

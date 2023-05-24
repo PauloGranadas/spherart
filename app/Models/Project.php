@@ -31,4 +31,16 @@ class Project extends Model
     {
         return $this->hasMany(ProjectMember::class);
     }
+
+    function scopeFilter($query, $searchTerm){
+        //return request()->query('search');
+        //$query->when($filters['search'] ?? false, function($query, $search){
+           /* if ($filters['search'] ?? false) {
+                $query->where('nikname', 'like', '%'. request('search') . '%');
+            }*/
+
+            return $query->where('nikname', 'LIKE', '%' . $searchTerm . '%');
+
+       
+    }
 }

@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Project;
 use App\Models\Category;
-use App\Models\ProjectCategory;
-use App\Models\ProjectMember;
 use Illuminate\Http\Request;
+use App\Models\ProjectMember;
+use App\Models\ProjectCategory;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\ProjectPendingNotification;
 
 class ProjectController extends Controller
 {
@@ -103,27 +104,29 @@ class ProjectController extends Controller
         return redirect('/projects')->with('message', 'Project created successfully and logged in');
     }
 
-    function createCollaborator(Project $project)
+    function createCollaborator(Project $project, Request $request)
     {
-
         // take all collaborator alredy associed to the project in one array
         $collaboratorsOfProject = $project->members->pluck('user_id')->toArray();
-        $collaborators = User::whereNotIN('id', $collaboratorsOfProject)->get();
+        //$collaborators = User::whereNotIN('id', $collaboratorsOfProject)->get();
+        $searchTerm = $request->input('search');
+        $collaborators = User::whereNotIN('id', $collaboratorsOfProject)
+                                            ->when($searchTerm, function ($query) use ($searchTerm) {
+                                                $query->where('nikname', 'LIKE', '%' . $searchTerm . '%')                                                        
+                                                        ->orWhere('locality', 'LIKE', '%' . $searchTerm . '%')
+                                                        ->orWhere('country', 'LIKE', '%' . $searchTerm . '%');
+                                                
+                                            })
+                                            ->latest()
+                                            ->get();        
+        
 
         return view('projects.add', ['project' => $project, 'collaborators' => $collaborators]);
     }
 
     function storeCollaborator(Request $request, Project $project, User $collaborator)
     {
-
-        //$collaborator->project_id = $project->id;
-
-        // insert in the table 
-        /*$project->members->attach($collaborator, [
-            'member_type'=>'collaborator',
-            'status'=>'pending'
-        ]);*/
-
+        
         //create project
         $projectMember = new ProjectMember;
         $projectMember->user_id = $collaborator->id;
@@ -132,7 +135,11 @@ class ProjectController extends Controller
         $projectMember->status = 'pending';
         $projectMember->save();
 
-        return redirect()->route('project.show', $project);
+        //$collaboratorEmail = $collaborator->email;
+
+        //$collaborator->notify(new ProjectPendingNotification());
+
+        return redirect()->route('project.show', $project)->with('message', 'Collaboration request demand sends successfully!');
     }
 
     //delete collaborator when click on the delete button inside the page of a project
@@ -142,7 +149,7 @@ class ProjectController extends Controller
         $collaborator->delete();
 
         return redirect()->route("project.show", $collaborator->project_id)->with('message', "Collaborator deleted successfully");
-        // return response()->json(['message'=>'Collaborator deleted successfully']);
+        
     }
 
     //delete project when clicked on the delete button inside the page of a collaborator
@@ -187,17 +194,11 @@ class ProjectController extends Controller
 
         $project->save();
 
-        $project->categories()->detach();
+        //$project->categories()->detach();
+        $project->categories()->sync($request->input('categories'));
 
-        $categories = $request->input('categories');
+             
 
-        foreach ($categories as $category) {
-            $projectCategory = new ProjectCategory();
-            $projectCategory->category_id = $category;
-            $projectCategory->project_id = $project->id;
-            $projectCategory->save();
-        }
-
-        return redirect('/projects')->with('message', 'Project updated successfully');
+        return redirect()->route('projects.index')->with('message', 'Project updated successfully');
     }
 }

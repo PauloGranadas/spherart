@@ -174,7 +174,7 @@ class UserController extends Controller
         $user->country = $validatedData['country'];
         // Update other user attributes...
         if ($request->hasFile('avatar')) {
-            $user->avatar = $imagePath;
+            $user->avatar = $imagePath; 
         }
 
         // Check if a new password is provided
